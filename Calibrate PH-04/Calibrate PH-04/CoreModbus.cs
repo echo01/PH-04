@@ -153,6 +153,7 @@ namespace Calibrate_PB_04
             bool state = false;
             if (value == null)
                 return (false);
+            if(nbyte<2) return false;
             if (value[0] == addr)
             {
                 if (value[1] == function)

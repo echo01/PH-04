@@ -152,28 +152,28 @@ namespace Calibrate_PB_04
                 return false;
             //  send command set mode = Set Type mV
             this.port_write(Memocal_type_mV, 0, Memocal_type_mV.Length);
-            Thread.Sleep(50);
+            Thread.Sleep(100);
             nrx_byte = this.port_read(rx_message, 0, 11);
             if (!CoreModbus.MsgCheck(rx_message, 6, 1, nrx_byte))
                 return false;
 
             //  send command set mode = Set Type mA
             this.port_write(Memocal_type_mA, 0, Memocal_type_mA.Length);
-            Thread.Sleep(50);
+            Thread.Sleep(100);
             nrx_byte = this.port_read(rx_message, 0, 11);
             if (!CoreModbus.MsgCheck(rx_message, 6, 1, nrx_byte))
                 return false;
 
             //  send command set mode = Memocal_non_rangeable
             this.port_write(Memocal_non_rangeable, 0, Memocal_non_rangeable.Length);
-            Thread.Sleep(50);
+            Thread.Sleep(100);
             nrx_byte = this.port_read(rx_message, 0, 11);
             if (!CoreModbus.MsgCheck(rx_message, 6, 1, nrx_byte))
                 return false;
 
             //  send command set mode = Memocal_deci_mA
             this.port_write(Memocal_deci_mA, 0, Memocal_deci_mA.Length);
-            Thread.Sleep(50);
+            Thread.Sleep(100);
             nrx_byte = this.port_read(rx_message, 0, 11);
             if (!CoreModbus.MsgCheck(rx_message, 6, 1, nrx_byte))
                 return false;
@@ -181,28 +181,28 @@ namespace Calibrate_PB_04
             //  send command set mode = Memocal_Value_Output_0mA
             Memocal_Value_Output_0mA = CoreModbus.Write(1, 401, mAvalue);
             this.port_write(Memocal_Value_Output_0mA, 0, Memocal_Value_Output_0mA.Length);
-            Thread.Sleep(50);
+            Thread.Sleep(100);
             nrx_byte = this.port_read(rx_message, 0, 11);
             if (!CoreModbus.MsgCheck(rx_message, 6, 1, nrx_byte))
                 return false;
 
             //  send command set mode = Memocal_500ohms_mA
             this.port_write(Memocal_500ohms_mA, 0, Memocal_500ohms_mA.Length);
-            Thread.Sleep(50);
+            Thread.Sleep(100);
             nrx_byte = this.port_read(rx_message, 0, 11);
             if (!CoreModbus.MsgCheck(rx_message, 6, 1, nrx_byte))
                 return false;
 
             //  send command set mode = Memocal_generate
             this.port_write(Memocal_generate, 0, Memocal_generate.Length);
-            Thread.Sleep(50);
+            Thread.Sleep(100);
             nrx_byte = this.port_read(rx_message, 0, 11);
             if (!CoreModbus.MsgCheck(rx_message, 6, 1, nrx_byte))
                 return false;
 
             //  send command set mode = Memocal_generate
             this.port_write(Memocal_Enter_write, 0, Memocal_Enter_write.Length);
-            Thread.Sleep(50);
+            Thread.Sleep(100);
             nrx_byte = this.port_read(rx_message, 0, 11);
             if (!CoreModbus.MsgCheck(rx_message, 6, 1, nrx_byte))
                 return false;
@@ -218,7 +218,7 @@ namespace Calibrate_PB_04
                 return false;
             //  send command set mode = Set Type mV
             this.port_write(Memocal_type_mV, 0, Memocal_type_mV.Length);
-            Thread.Sleep(50);
+            Thread.Sleep(100);
             nrx_byte = this.port_read(rx_message, 0, 11);
             if (!CoreModbus.MsgCheck(rx_message, 6, 1, nrx_byte))
                 return false;
@@ -227,14 +227,14 @@ namespace Calibrate_PB_04
 
             //  send command set mode = Memocal_non_rangeable
             this.port_write(Memocal_non_rangeable, 0, Memocal_non_rangeable.Length);
-            Thread.Sleep(50);
+            Thread.Sleep(100);
             nrx_byte = this.port_read(rx_message, 0, 11);
             if (!CoreModbus.MsgCheck(rx_message, 6, 1, nrx_byte))
                 return false;
 
             //  send command set mode = Memocal_deci_mA
             this.port_write(Memocal_selecltion_Auto, 0, Memocal_selecltion_Auto.Length);
-            Thread.Sleep(50);
+            Thread.Sleep(100);
             nrx_byte = this.port_read(rx_message, 0, 11);
             if (!CoreModbus.MsgCheck(rx_message, 6, 1, nrx_byte))
                 return false;
@@ -242,7 +242,7 @@ namespace Calibrate_PB_04
             //  send command set mode = Memocal_Value_Output_0mA
             Memocal_Value_Output_0mA = CoreModbus.Write(1, 401, mVvalue);
             this.port_write(Memocal_Value_Output_0mA, 0, Memocal_Value_Output_0mA.Length);
-            Thread.Sleep(50);
+            Thread.Sleep(100);
             nrx_byte = this.port_read(rx_message, 0, 11);
             if (!CoreModbus.MsgCheck(rx_message, 6, 1, nrx_byte))
                 return false;
@@ -250,14 +250,14 @@ namespace Calibrate_PB_04
 
             //  send command set mode = Memocal_generate
             this.port_write(Memocal_generate, 0, Memocal_generate.Length);
-            Thread.Sleep(50);
+            Thread.Sleep(100);
             nrx_byte = this.port_read(rx_message, 0, 11);
             if (!CoreModbus.MsgCheck(rx_message, 6, 1, nrx_byte))
                 return false;
 
             //  send command set mode = Memocal_generate
             this.port_write(Memocal_Enter_write, 0, Memocal_Enter_write.Length);
-            Thread.Sleep(50);
+            Thread.Sleep(100);
             nrx_byte = this.port_read(rx_message, 0, 11);
             if (!CoreModbus.MsgCheck(rx_message, 6, 1, nrx_byte))
                 return false;

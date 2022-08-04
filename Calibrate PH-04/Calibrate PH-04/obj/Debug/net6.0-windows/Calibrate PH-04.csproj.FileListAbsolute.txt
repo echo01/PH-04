@@ -25,3 +25,4 @@ C:\Users\INUM4\Documents\GitHub\PH-04\Calibrate PH-04\Calibrate PH-04\bin\Debug\
 C:\Users\INUM4\Documents\GitHub\PH-04\Calibrate PH-04\Calibrate PH-04\bin\Debug\net6.0-windows\runtimes\unix\lib\net6.0\System.IO.Ports.dll
 C:\Users\INUM4\Documents\GitHub\PH-04\Calibrate PH-04\Calibrate PH-04\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.IO.Ports.dll
 C:\Users\INUM4\Documents\GitHub\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Debug\net6.0-windows\Calibrate PH-04.csproj.CopyComplete
+C:\Users\INUM4\Documents\GitHub\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Debug\net6.0-windows\Calibrate_PH_04.Form1.resources

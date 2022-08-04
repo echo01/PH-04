@@ -15,7 +15,13 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_27D3AC36AF194F28860B0A740836B9C6"
+        "MsmKey" = "8:_32DBC86E59CC4B56A47D2CB6929236FE"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D70E6646A60A4B7093D0F64F6E086FB0"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -37,6 +43,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -53,6 +75,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -70,6 +108,14 @@
         {
             "LaunchCondition"
             {
+                "{A06ECF26-33A3-4562-8140-9B0E340D4F24}:_6E564072CEC042C595EAA31E0B0DB54D"
+                {
+                "Name" = "8:.NET Framework"
+                "Message" = "8:[VSDNETMSG]"
+                "FrameworkVersion" = "8:.NETFramework,Version=v4.7.2"
+                "AllowLaterVersions" = "11:FALSE"
+                "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=863262"
+                }
                 "{A06ECF26-33A3-4562-8140-9B0E340D4F24}:_C9F94943A35143A7B2EC9BFCE39736D2"
                 {
                 "Name" = "8:.NET Core"
@@ -84,6 +130,26 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_32DBC86E59CC4B56A47D2CB6929236FE"
+            {
+            "SourcePath" = "8:..\\Calibrate PH-04\\ICON\\logo-w.ico"
+            "TargetName" = "8:logo-w.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_233780F487704BEC8463E3BF682E9AEC"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
@@ -122,6 +188,17 @@
             "Property" = "8:ProgramMenuFolder"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_C33F567D17294E908F50E9D8EA88430B"
+                    {
+                    "Name" = "8:Calibrate PH-04 beta"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_D1D007FDB3914FC095050A48E1D469F2"
+                        "Folders"
+                        {
+                        }
+                    }
                 }
             }
         }
@@ -141,13 +218,13 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Setup Calibrate PH-04beta"
         "ProductCode" = "8:{79854115-EA15-4824-A588-AEB293CEC18B}"
-        "PackageCode" = "8:{C6F70E94-AAE3-41F4-B848-6CF4CF3A66A5}"
+        "PackageCode" = "8:{578E57A4-B26F-40CD-90B4-4423F3BBBDC4}"
         "UpgradeCode" = "8:{C2AAD67B-DAA0-4EAE-9710-DA03BD9126C4}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
-        "InstallAllUsers" = "11:FALSE"
+        "InstallAllUsers" = "11:TRUE"
         "ProductVersion" = "8:1.0.0"
         "Manufacturer" = "8:Primus"
         "ARPHELPTELEPHONE" = "8:"
@@ -261,6 +338,20 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_A177AE101D5E465E93687FB9ECB892E0"
+            {
+            "Name" = "8:Calibrate PH-04 (Active)"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_D70E6646A60A4B7093D0F64F6E086FB0"
+            "Folder" = "8:_C33F567D17294E908F50E9D8EA88430B"
+            "WorkingFolder" = "8:_233780F487704BEC8463E3BF682E9AEC"
+            "Icon" = "8:_32DBC86E59CC4B56A47D2CB6929236FE"
+            "Feature" = "8:"
+            }
         }
         "UserInterface"
         {
@@ -660,7 +751,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_27D3AC36AF194F28860B0A740836B9C6"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_D70E6646A60A4B7093D0F64F6E086FB0"
             {
             "SourcePath" = "8:..\\Calibrate PH-04\\obj\\Debug\\net6.0-windows\\apphost.exe"
             "TargetName" = "8:"

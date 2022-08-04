@@ -1,0 +1,28 @@
+C:\Users\INUM4\Documents\GitHub\PH-04\Calibrate PH-04\Calibrate PH-04\bin\Release\net6.0-windows\Calibrate PH-04.exe
+C:\Users\INUM4\Documents\GitHub\PH-04\Calibrate PH-04\Calibrate PH-04\bin\Release\net6.0-windows\Calibrate PH-04.deps.json
+C:\Users\INUM4\Documents\GitHub\PH-04\Calibrate PH-04\Calibrate PH-04\bin\Release\net6.0-windows\Calibrate PH-04.runtimeconfig.json
+C:\Users\INUM4\Documents\GitHub\PH-04\Calibrate PH-04\Calibrate PH-04\bin\Release\net6.0-windows\Calibrate PH-04.dll
+C:\Users\INUM4\Documents\GitHub\PH-04\Calibrate PH-04\Calibrate PH-04\bin\Release\net6.0-windows\Calibrate PH-04.pdb
+C:\Users\INUM4\Documents\GitHub\PH-04\Calibrate PH-04\Calibrate PH-04\bin\Release\net6.0-windows\System.IO.Ports.dll
+C:\Users\INUM4\Documents\GitHub\PH-04\Calibrate PH-04\Calibrate PH-04\bin\Release\net6.0-windows\runtimes\linux-arm\native\libSystem.IO.Ports.Native.so
+C:\Users\INUM4\Documents\GitHub\PH-04\Calibrate PH-04\Calibrate PH-04\bin\Release\net6.0-windows\runtimes\linux-arm64\native\libSystem.IO.Ports.Native.so
+C:\Users\INUM4\Documents\GitHub\PH-04\Calibrate PH-04\Calibrate PH-04\bin\Release\net6.0-windows\runtimes\linux-x64\native\libSystem.IO.Ports.Native.so
+C:\Users\INUM4\Documents\GitHub\PH-04\Calibrate PH-04\Calibrate PH-04\bin\Release\net6.0-windows\runtimes\osx-arm64\native\libSystem.IO.Ports.Native.dylib
+C:\Users\INUM4\Documents\GitHub\PH-04\Calibrate PH-04\Calibrate PH-04\bin\Release\net6.0-windows\runtimes\osx-x64\native\libSystem.IO.Ports.Native.dylib
+C:\Users\INUM4\Documents\GitHub\PH-04\Calibrate PH-04\Calibrate PH-04\bin\Release\net6.0-windows\runtimes\unix\lib\net6.0\System.IO.Ports.dll
+C:\Users\INUM4\Documents\GitHub\PH-04\Calibrate PH-04\Calibrate PH-04\bin\Release\net6.0-windows\runtimes\win\lib\net6.0\System.IO.Ports.dll
+C:\Users\INUM4\Documents\GitHub\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Release\net6.0-windows\Calibrate PH-04.csproj.AssemblyReference.cache
+C:\Users\INUM4\Documents\GitHub\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Release\net6.0-windows\Calibrate_PH_04.Form1.resources
+C:\Users\INUM4\Documents\GitHub\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Release\net6.0-windows\Calibrate_PH_04.FormStart.resources
+C:\Users\INUM4\Documents\GitHub\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Release\net6.0-windows\Calibrate_PH_04.Properties.Resources.resources
+C:\Users\INUM4\Documents\GitHub\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Release\net6.0-windows\Calibrate PH-04.csproj.GenerateResource.cache
+C:\Users\INUM4\Documents\GitHub\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Release\net6.0-windows\Calibrate PH-04.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\INUM4\Documents\GitHub\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Release\net6.0-windows\Calibrate PH-04.AssemblyInfoInputs.cache
+C:\Users\INUM4\Documents\GitHub\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Release\net6.0-windows\Calibrate PH-04.AssemblyInfo.cs
+C:\Users\INUM4\Documents\GitHub\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Release\net6.0-windows\Calibrate PH-04.csproj.CoreCompileInputs.cache
+C:\Users\INUM4\Documents\GitHub\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Release\net6.0-windows\Calibrate PH-04.csproj.CopyComplete
+C:\Users\INUM4\Documents\GitHub\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Release\net6.0-windows\Calibrate PH-04.dll
+C:\Users\INUM4\Documents\GitHub\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Release\net6.0-windows\refint\Calibrate PH-04.dll
+C:\Users\INUM4\Documents\GitHub\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Release\net6.0-windows\Calibrate PH-04.pdb
+C:\Users\INUM4\Documents\GitHub\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Release\net6.0-windows\Calibrate PH-04.genruntimeconfig.cache
+C:\Users\INUM4\Documents\GitHub\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Release\net6.0-windows\ref\Calibrate PH-04.dll

@@ -10,13 +10,14 @@ namespace Calibrate_PH_04
     public partial class FormStart : Form
     {
         static SerialPort sPort1, sPort2;
-        public Stopwatch stopWatch = new Stopwatch();
+        public Stopwatch stopWatch = new();
         //memocal Memocal2000 = new memocal();
         //public PH04 ph04 = new PH04();
         //public PH07 ph07id2 = new PH07();
         //public PH07 ph07id3 = new PH07();
         //public PH07 ph07id4 = new PH07();
         CalibrateProcess process = new();
+        Form1 ResultForm = new();
 
         public FormStart()
         {
@@ -29,9 +30,9 @@ namespace Calibrate_PH_04
 
         private void Get_compoart_list()
         {
-            string[] ArrayComPortsNames = null;
+            string[] ArrayComPortsNames;
             int index = -1;
-            string ComPortName = null;
+            string ComPortName = "";
             ArrayComPortsNames = SerialPort.GetPortNames();
             comboBox1.Items.Clear();
             comboBox2.Items.Clear();
@@ -173,7 +174,9 @@ namespace Calibrate_PH_04
                 {
                 LED2.Image = Properties.Resources.green;
                 splitContainer1.Enabled = true;
-                } 
+                splitContainer2.Enabled = true;
+                pictureBox1.Image = Properties.Resources.green;
+            } 
             else
                 {
                 LED2.Image = Properties.Resources.red;
@@ -195,7 +198,7 @@ namespace Calibrate_PH_04
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error !! Please check Comport or restart app");
+                    MessageBox.Show("Error !! Please check Comport or restart app"+ex.ToString());
                     listBox1.Items.Add("Error !! Please check Comport or restart app");
                 }
             }
@@ -213,23 +216,26 @@ namespace Calibrate_PH_04
         private void button4_Click(object sender, EventArgs e)
         {
             //process.Memocal2000.Memocal_Gen_mA(int.Parse(textBox1.Text));
-            //process.Select_PH04_Channel= Int16.Parse(comboBox12.Text);
+            process.Select_PH04_Channel= Int16.Parse(comboBox12.Text);
             //process.SetInput_test(process.Select_PH04_Channel, 1);
-            backgroundWorker_manualmA.RunWorkerAsync();
+            if (!backgroundWorker_manualmA.IsBusy)
+                backgroundWorker_manualmA.RunWorkerAsync();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             //process.Memocal2000.Memocal_Gen_mV(int.Parse(textBox1.Text));
-            //process.Select_PH04_Channel = Int16.Parse(comboBox3.Text);
+            process.Select_PH04_Channel = Int16.Parse(comboBox3.Text);
             //process.SetInput_test(process.Select_PH04_Channel, 1);
-            backgroundWorker_manualmV.RunWorkerAsync();
+            if(!backgroundWorker_manualmV.IsBusy)
+                backgroundWorker_manualmV.RunWorkerAsync();
         }
 
         private void button11_Click(object sender, EventArgs e)
         {
-            bkgWorker_GetPH04value.RunWorkerAsync();
-
+            if(!bkgWorker_GetPH04value.IsBusy)
+                bkgWorker_GetPH04value.RunWorkerAsync();
+            
         }
 
         private void button12_Click(object sender, EventArgs e)
@@ -282,13 +288,18 @@ namespace Calibrate_PH_04
                     ts.Minutes, ts.Seconds,
                     ts.Milliseconds / 10);
 
-                this.labelStopwatch.Invoke(new MethodInvoker(delegate () { labelStopwatch.Text = elapsedTime; }));
+                this.labelStopwatch.Invoke(new MethodInvoker(delegate () {
+                    labelStopwatch.Text = elapsedTime; 
+                    label_calibrate.Text = elapsedTime;
+                    }
+                ));
             }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            bkgWorker_Stopwatch.RunWorkerAsync();
+            if(!bkgWorker_Stopwatch.IsBusy)
+                bkgWorker_Stopwatch.RunWorkerAsync();
             if(process.Is_update_msg)
             {
                 richTextBox1.AppendText(process.Upate_msg());
@@ -297,8 +308,10 @@ namespace Calibrate_PH_04
                 richTextBox1.Refresh();
 
                 progressBar1.Value = process.Calibrate_progress;
+                //progressBar2.Value = process.Auto_Cal_progress;
+                //progressBar3.Value = process.Calibrate_progress;
             }
-            if(!process.Calibrate_thread_run)
+            if((!process.Calibrate_thread_run)&&(!process.Test_thread_run))
             {
                 timer1.Enabled = false;
             }
@@ -311,12 +324,12 @@ namespace Calibrate_PH_04
                 process.Select_PH04_Channel = Int16.Parse(comboBox12.Text);
             }));
             
-            process.SetInput_test(process.Select_PH04_Channel, 1);
+            process.SetInput_test(process.Select_PH04_Channel, 0);
         }
 
         private void backgroundWorker_manualmV_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
-            process.Memocal2000.Memocal_Gen_mA(int.Parse(textBox1.Text));
+            process.Memocal2000.Memocal_Gen_mV(int.Parse(textBox1.Text));
             this.Invoke(new MethodInvoker(delegate () {
                 process.Select_PH04_Channel = Int16.Parse(comboBox12.Text);
             }));       
@@ -389,6 +402,354 @@ namespace Calibrate_PH_04
             process.ph04.Calibrate_Mux_channel(process.Select_PH04_Channel);
             process.ph04.Calibrate_Duplicate_to_all_CH();
             richTextBox1.AppendText("Force all channel use same calibrate value..\r\n");
+        }
+
+        private void btn_autoCalibrate_Click(object sender, EventArgs e)
+        {
+            process.Channel_need_to_calibrate[0] = check_ch1.Checked;
+            process.Channel_need_to_calibrate[1] = check_ch2.Checked;
+            process.Channel_need_to_calibrate[2] = check_ch3.Checked;
+            process.Channel_need_to_calibrate[3] = check_ch4.Checked;
+
+            process.Channel_need_to_calibrate[4] = check_ch5.Checked;
+            process.Channel_need_to_calibrate[5] = check_ch6.Checked;
+            process.Channel_need_to_calibrate[6] = check_ch7.Checked;
+            process.Channel_need_to_calibrate[7] = check_ch8.Checked;
+
+            process.Auto_Cal_Run = true;
+            process.start_Auto_cal_thread(checkBox3.Checked,checkBox4.Checked);
+            timer2.Enabled = true;
+            stopWatch.Restart();
+            stopWatch.Start();
+            btn_autoCalibrate.Enabled = false;
+            btn_autoTest.Enabled=false;
+            if (timer3.Enabled) timer3.Enabled = false;
+        }
+
+
+        private void Show_test_result()
+        {
+            bool t_result;
+            t_result = process.ph04.TestTable.Report_result();
+            
+
+            if(check_allch.Checked)
+            {
+                if (t_result)
+                {
+                    if (ResultForm.IsDisposed)
+                        ResultForm = new Form1();
+                    ResultForm.label1.Visible = false;
+                    ResultForm.label2.Visible = true;
+                    ResultForm.Visible = true;
+                    ResultForm.Show();
+                }
+                else
+                {
+                    if (ResultForm.IsDisposed)
+                        ResultForm = new Form1();
+                    ResultForm.label1.Visible = true;
+                    ResultForm.label2.Visible = false;
+                    ResultForm.Visible = true;
+                    ResultForm.Show();
+                }
+            }
+            else
+            {
+                richTextBox2.AppendText("Test Done...");
+                richTextBox2.AppendText(Environment.NewLine);
+                richTextBox2.ScrollToCaret();
+                richTextBox2.Refresh();
+            }
+            if(check_ch1.Checked)
+                if (process.ph04.TestTable.Cal_Result[0])
+                    Result_CH1.Image = Properties.Resources.ok2;
+                else
+                    Result_CH1.Image= Properties.Resources.fail2;
+            else
+                Result_CH1.Image = Properties.Resources.none1;
+
+            if (check_ch2.Checked)
+                if (process.ph04.TestTable.Cal_Result[1])
+                    Result_CH2.Image = Properties.Resources.ok2;
+                else
+                    Result_CH2.Image = Properties.Resources.fail2;
+            else
+                Result_CH2.Image = Properties.Resources.none1;
+
+            if(check_ch3.Checked)
+                if (process.ph04.TestTable.Cal_Result[2])
+                    Result_CH3.Image = Properties.Resources.ok2;
+                else
+                    Result_CH3.Image = Properties.Resources.fail2;
+            else
+                Result_CH3.Image = Properties.Resources.none1;
+
+            if(check_ch4.Checked)
+                if (process.ph04.TestTable.Cal_Result[3])
+                    Result_CH4.Image = Properties.Resources.ok2;
+                else
+                    Result_CH4.Image = Properties.Resources.fail2;
+            else
+                Result_CH4.Image = Properties.Resources.none1;
+
+            if(check_ch5.Checked)
+                if (process.ph04.TestTable.Cal_Result[4])
+                    Result_CH5.Image = Properties.Resources.ok2;
+                else
+                    Result_CH5.Image = Properties.Resources.fail2;
+            else
+                Result_CH5.Image = Properties.Resources.none1;
+
+            if (check_ch6.Checked)
+                if (process.ph04.TestTable.Cal_Result[5])
+                    Result_CH6.Image = Properties.Resources.ok2;
+                else
+                    Result_CH6.Image = Properties.Resources.fail2;
+            else
+                Result_CH6.Image = Properties.Resources.none1;
+
+            if(check_ch7.Checked)
+                if (process.ph04.TestTable.Cal_Result[6])
+                    Result_CH7.Image = Properties.Resources.ok2;
+                else
+                    Result_CH7.Image = Properties.Resources.fail2;
+            else
+                Result_CH7.Image = Properties.Resources.none1;
+
+            if(check_ch8.Checked)
+                if (process.ph04.TestTable.Cal_Result[7])
+                    Result_CH8.Image = Properties.Resources.ok2;
+                else
+                    Result_CH8.Image = Properties.Resources.fail2;
+            else
+                Result_CH8.Image = Properties.Resources.none1;
+
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            if (!bkgWorker_Stopwatch.IsBusy)
+                bkgWorker_Stopwatch.RunWorkerAsync();
+            if (process.Is_update_msg)
+            {
+                richTextBox2.AppendText(process.Upate_msg());
+                richTextBox2.AppendText(Environment.NewLine);
+                richTextBox2.ScrollToCaret();
+                richTextBox2.Refresh();
+
+                //progressBar1.Value = process.Calibrate_progress;
+                progressBar2.Value = process.Auto_Cal_progress;
+                progressBar3.Value = process.Calibrate_progress;
+            }
+            if (!process.Auto_Cal_Run)
+            {
+                //Show_test_result();
+                timer2.Enabled = false;
+                btn_autoCalibrate.Enabled = true;
+                btn_autoTest.Enabled = true;
+                if (checkBox5.Checked)
+                {
+                    start_test();
+                }
+                    
+            }
+        }
+
+        private void timer3_Tick(object sender, EventArgs e)
+        {
+            if(!bkgWorker_Stopwatch.IsBusy)
+                bkgWorker_Stopwatch.RunWorkerAsync();
+            if (process.Is_update_msg)
+            {
+                richTextBox2.AppendText(process.Upate_msg());
+                richTextBox2.AppendText(Environment.NewLine);
+                richTextBox2.ScrollToCaret();
+                richTextBox2.Refresh();
+
+                //progressBar1.Value = process.Calibrate_progress;
+                progressBar2.Value = process.Auto_Cal_progress;
+                progressBar3.Value = process.Calibrate_progress;
+            }
+            if (!process.Auto_Cal_Run)
+            {
+                timer3.Enabled = false;
+                btn_autoCalibrate.Enabled = true;
+                btn_autoTest.Enabled = true;
+                Show_test_result();
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            process.Select_PH04_Channel = Int16.Parse(comboBox3.Text);
+            process.SetInput_test(process.Select_PH04_Channel, 0);
+            stopWatch.Restart();
+            stopWatch.Start();
+            richTextBox1.Clear();
+            richTextBox1.AppendText("Start test ..\r\n");
+            process.start_test_thread(checkBox1.Checked, checkBox2.Checked);
+            timer1.Enabled = true;
+        }
+
+
+        void start_test()
+        {
+            process.Channel_need_to_calibrate[0] = check_ch1.Checked;
+            process.Channel_need_to_calibrate[1] = check_ch2.Checked;
+            process.Channel_need_to_calibrate[2] = check_ch3.Checked;
+            process.Channel_need_to_calibrate[3] = check_ch4.Checked;
+
+            process.Channel_need_to_calibrate[4] = check_ch5.Checked;
+            process.Channel_need_to_calibrate[5] = check_ch6.Checked;
+            process.Channel_need_to_calibrate[6] = check_ch7.Checked;
+            process.Channel_need_to_calibrate[7] = check_ch8.Checked;
+
+            Result_CH1.Image = Properties.Resources.none1;
+            Result_CH2.Image = Properties.Resources.none1;
+            Result_CH3.Image = Properties.Resources.none1;
+            Result_CH4.Image = Properties.Resources.none1;
+            Result_CH5.Image = Properties.Resources.none1;
+            Result_CH6.Image = Properties.Resources.none1;
+            Result_CH7.Image = Properties.Resources.none1;
+            Result_CH8.Image = Properties.Resources.none1;
+
+            process.Auto_Cal_Run = true;
+            process.start_Auto_test_thread(checkBox3.Checked, checkBox4.Checked);
+            timer3.Enabled = true;
+            if (timer2.Enabled) timer2.Enabled = false;
+        }
+
+        private void btn_autoTest_Click(object sender, EventArgs e)
+        {
+            start_test();
+            /*process.Channel_need_to_calibrate[0] = check_ch1.Checked;
+            process.Channel_need_to_calibrate[1] = check_ch2.Checked;
+            process.Channel_need_to_calibrate[2] = check_ch3.Checked;
+            process.Channel_need_to_calibrate[3] = check_ch4.Checked;
+
+            process.Channel_need_to_calibrate[4] = check_ch5.Checked;
+            process.Channel_need_to_calibrate[5] = check_ch6.Checked;
+            process.Channel_need_to_calibrate[6] = check_ch7.Checked;
+            process.Channel_need_to_calibrate[7] = check_ch8.Checked;
+
+            Result_CH1.Image = Properties.Resources.none1;
+            Result_CH2.Image = Properties.Resources.none1;
+            Result_CH3.Image = Properties.Resources.none1;
+            Result_CH4.Image = Properties.Resources.none1;
+            Result_CH5.Image = Properties.Resources.none1;
+            Result_CH6.Image = Properties.Resources.none1;
+            Result_CH7.Image = Properties.Resources.none1;
+            Result_CH8.Image = Properties.Resources.none1;
+
+            process.Auto_Cal_Run = true;
+            process.start_Auto_test_thread(checkBox3.Checked, checkBox4.Checked);
+            timer3.Enabled = true;*/
+            stopWatch.Restart();
+            stopWatch.Start();
+        }
+
+        private void btn_stop_calibrate_Click(object sender, EventArgs e)
+        {
+            process.stop_auto_cal_thread();
+            process.stop_auto_test_thread();
+        }
+
+        private void check_ch1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!check_ch1.Checked)
+                check_allch.Checked = false;
+            else
+            {
+                check_allch.Checked = check_ch1.Checked& check_ch2.Checked& check_ch3.Checked& check_ch4.Checked& check_ch5.Checked& check_ch6.Checked& check_ch7.Checked& check_ch8.Checked;
+            }
+
+        }
+
+        private void check_allch_CheckedChanged(object sender, EventArgs e)
+        {
+            if(check_allch.Checked)
+            {
+                check_ch1.Checked = true;
+                check_ch2.Checked = true;
+                check_ch3.Checked = true;
+                check_ch4.Checked = true;
+                check_ch5.Checked = true;
+                check_ch6.Checked = true;
+                check_ch7.Checked = true;
+                check_ch8.Checked = true;
+            }
+            
+        }
+
+        private void check_ch2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!check_ch2.Checked)
+                check_allch.Checked = false;
+            else
+            {
+                check_allch.Checked = check_ch1.Checked & check_ch2.Checked & check_ch3.Checked & check_ch4.Checked & check_ch5.Checked & check_ch6.Checked & check_ch7.Checked & check_ch8.Checked;
+            }
+        }
+
+        private void check_ch3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!check_ch3.Checked)
+                check_allch.Checked = false;
+            else
+            {
+                check_allch.Checked = check_ch1.Checked & check_ch2.Checked & check_ch3.Checked & check_ch4.Checked & check_ch5.Checked & check_ch6.Checked & check_ch7.Checked & check_ch8.Checked;
+            }
+        }
+
+        private void check_ch4_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!check_ch4.Checked)
+                check_allch.Checked = false;
+            else
+            {
+                check_allch.Checked = check_ch1.Checked & check_ch2.Checked & check_ch3.Checked & check_ch4.Checked & check_ch5.Checked & check_ch6.Checked & check_ch7.Checked & check_ch8.Checked;
+            }
+        }
+
+        private void check_ch5_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!check_ch5.Checked)
+                check_allch.Checked = false;
+            else
+            {
+                check_allch.Checked = check_ch1.Checked & check_ch2.Checked & check_ch3.Checked & check_ch4.Checked & check_ch5.Checked & check_ch6.Checked & check_ch7.Checked & check_ch8.Checked;
+            }
+        }
+
+        private void check_ch6_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!check_ch6.Checked)
+                check_allch.Checked = false;
+            else
+            {
+                check_allch.Checked = check_ch1.Checked & check_ch2.Checked & check_ch3.Checked & check_ch4.Checked & check_ch5.Checked & check_ch6.Checked & check_ch7.Checked & check_ch8.Checked;
+            }
+        }
+
+        private void check_ch7_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!check_ch7.Checked)
+                check_allch.Checked = false;
+            else
+            {
+                check_allch.Checked = check_ch1.Checked & check_ch2.Checked & check_ch3.Checked & check_ch4.Checked & check_ch5.Checked & check_ch6.Checked & check_ch7.Checked & check_ch8.Checked;
+            }
+        }
+
+        private void check_ch8_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!check_ch8.Checked)
+                check_allch.Checked = false;
+            else
+            {
+                check_allch.Checked = check_ch1.Checked & check_ch2.Checked & check_ch3.Checked & check_ch4.Checked & check_ch5.Checked & check_ch6.Checked & check_ch7.Checked & check_ch8.Checked;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)

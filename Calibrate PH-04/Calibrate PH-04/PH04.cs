@@ -70,6 +70,8 @@ namespace Calibrate_PB_04
         public bool[] DC5Vresult = new bool[8];
         public bool[] DC10Vresult = new bool[8];
 
+        public bool[] Cal_Result = new bool[8];
+
         public Int16[] AnalogCH = new Int16[8];
         
 
@@ -91,7 +93,40 @@ namespace Calibrate_PB_04
             }
         }
 
+        public bool CH_Calibrate_mAResult(int ch)
+        {
+            bool test_result;
+            test_result = DC0mAresult[ch] & DC10mAresult[ch] & DC20mA1result[ch] & DC4mAresult[ch] & DC12mAresult[ch] & DC20mAresult[ch];
+            return test_result;
+        }
 
+        public bool CH_Calibrate_mVResult(int ch)
+        {
+            bool test_result;
+            test_result = DC0mVresult[ch] & DC500mVresult[ch] & DC1000mVresult[ch] & DCb100mVresult[ch] & DCb500mVresult[ch] & DCb1000mVresult[ch];
+            test_result = test_result & DC00mVresult[ch] & DC2500mVresult[ch] & DC5000mVresult[ch] & DCb00mVresult[ch] & DCb2500mVresult[ch] & DCb5000mVresult[ch];
+            test_result = test_result & DC0Vresult[ch] & DC5Vresult[ch] & DC10Vresult[ch];
+            return test_result;
+        }
+
+        public bool CH_calibrate_mAmVResult(int ch)
+        {
+            bool test_result;
+            test_result = CH_Calibrate_mAResult(ch) & CH_Calibrate_mVResult(ch);
+            return test_result;
+        }
+
+        public bool Report_result()
+        {
+            bool test_result;
+            int i;
+            for(i=0;i<8;i++)
+            {
+                Cal_Result[i] = CH_calibrate_mAmVResult(i);
+            }
+            test_result = Cal_Result[0] & Cal_Result[1] & Cal_Result[2] & Cal_Result[3] & Cal_Result[4] & Cal_Result[5] & Cal_Result[6] & Cal_Result[7];
+            return test_result;
+        }
 
     }
 
@@ -327,7 +362,7 @@ namespace Calibrate_PB_04
             try
             {
                 this.port_write(this.cmd_msg, 0, this.cmd_msg.Length);
-                Thread.Sleep(50);
+                Thread.Sleep(80);
                 nrx_byte = this.port_read(rx_message, 0, 8);
                 return CoreModbus.MsgCheck(rx_message, 16, this.SlaveId, nrx_byte);
             }
