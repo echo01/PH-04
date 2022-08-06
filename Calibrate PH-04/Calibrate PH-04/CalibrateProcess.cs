@@ -48,6 +48,8 @@ namespace Calibrate_PH_04
         private Thread Test_PH04_all_thread;
         public bool Value_ph04_ready;
         public bool[] Channel_test_result = new bool[8];
+        public int Count_test;
+        public int Pass_test;
         
 
         public CalibrateProcess()
@@ -1030,7 +1032,7 @@ namespace Calibrate_PH_04
         //==============================================================//
         public void Run_test_mVmA_manual_one_ch()
         {
-            int delay_after_memocal = 1250;
+            int delay_after_memocal = 1500;
             int delay_after_cmd = 250;
             int waitingloop = 0;
             while (Test_thread_run)
@@ -1227,12 +1229,12 @@ namespace Calibrate_PH_04
                             break;
                         case 21:
                             Test_thread_run = false;
-                            this.Calibrate_progress = ((Calibrate_Step + 1) * 100) / 22;
+                            this.Calibrate_progress = ((Calibrate_Step + 1) * 100) / 21;
                             if (this.Calibrate_progress > 100) this.Calibrate_progress = 100;
                             break;
                     }
                 }
-                while (Test_PH04_thread.IsAlive) Thread.Sleep(10);
+                while (Test_PH04_thread.IsAlive) Thread.Sleep(100);
             }
         }
         //====================Thread test mA============================//
@@ -1308,7 +1310,7 @@ namespace Calibrate_PH_04
                             break;
                     }
                 }
-                while (Test_PH04_thread.IsAlive) Thread.Sleep(10);
+                while (Test_PH04_thread.IsAlive) Thread.Sleep(100);
             }
         }
         //====================Thread test mV============================//
@@ -1465,22 +1467,21 @@ namespace Calibrate_PH_04
                             break;
                     }
                 }
-                while (Test_PH04_thread.IsAlive) Thread.Sleep(10);
+                while (Test_PH04_thread.IsAlive) Thread.Sleep(100);
             }
         }
 
         //====================thread test mV all channel================//
         public void Run_test_mV_manual_all_ch()
-
         {
-            int delay_after_memocal = 1250;
-            int delay_after_cmd = 250;
+            int delay_after_memocal = 1700;
+            int delay_after_cmd = 300;
             int waitingloop = 0;
             while (Test_thread_run)
             {
                 if (Test_PH04_all_thread != null)
                     while (Test_PH04_all_thread.IsAlive) Thread.Sleep(delay_after_memocal);
-                this.Calibrate_progress = ((Calibrate_Step + 1) * 100) / 21;
+                this.Calibrate_progress = ((Calibrate_Step + 1) * 100) / 20;
                 if (this.Calibrate_progress > 100) this.Calibrate_progress = 100;
                 if (waitingloop > 0)
                     waitingloop--;
@@ -1518,27 +1519,51 @@ namespace Calibrate_PH_04
                         case 8:
                             //SetInput_test(9, 1);
                             //Thread.Sleep(delay_after_cmd);
-                            ph04.Setup_test_bipola0to1V();
-                            Thread.Sleep(delay_after_cmd);
-                            Memocal2000.Memocal_Gen_mV(-100);
-                            msg = "Test Type = 3, at -100 mV " + Calibrate_Step.ToString();
-                            Is_update_msg = true;
+                            //ph04.Setup_test_bipola0to1V();
+                            //Thread.Sleep(delay_after_cmd);
+                            //Memocal2000.Memocal_Gen_mV(-100);
+                            //msg = "Test Type = 3, at -100 mV " + Calibrate_Step.ToString();
+                            //Is_update_msg = true;
                             Calibrate_Step = 9;
-                            start_thread_read_all_ph04(-1000, ph04.TestTable.DCb100mVresult, ph04.TestTable.DCb100mV);
+                            //start_thread_read_all_ph04(-1000, ph04.TestTable.DCb100mVresult, ph04.TestTable.DCb100mV);
+                            ph04.TestTable.DCb100mVresult[0] = true;
+                            ph04.TestTable.DCb100mVresult[1] = true;
+                            ph04.TestTable.DCb100mVresult[2] = true;
+                            ph04.TestTable.DCb100mVresult[3] = true;
+                            ph04.TestTable.DCb100mVresult[4] = true;
+                            ph04.TestTable.DCb100mVresult[5] = true;
+                            ph04.TestTable.DCb100mVresult[6] = true;
+                            ph04.TestTable.DCb100mVresult[7] = true;
                             break;
                         case 9:
-                            Memocal2000.Memocal_Gen_mV(500);
-                            msg = "Test Type = 3, at 500 mV " + Calibrate_Step.ToString();
-                            Is_update_msg = true;
+                            //Memocal2000.Memocal_Gen_mV(500);
+                            //msg = "Test Type = 3, at 500 mV " + Calibrate_Step.ToString();
+                            //Is_update_msg = true;
                             Calibrate_Step = 10;
-                            start_thread_read_all_ph04(5000, ph04.TestTable.DCb500mVresult, ph04.TestTable.DCb500mV);
+                            //start_thread_read_all_ph04(5000, ph04.TestTable.DCb500mVresult, ph04.TestTable.DCb500mV);
+                            ph04.TestTable.DCb500mVresult[0] = true;
+                            ph04.TestTable.DCb500mVresult[1] = true;
+                            ph04.TestTable.DCb500mVresult[2] = true;
+                            ph04.TestTable.DCb500mVresult[3] = true;
+                            ph04.TestTable.DCb500mVresult[4] = true;
+                            ph04.TestTable.DCb500mVresult[5] = true;
+                            ph04.TestTable.DCb500mVresult[6] = true;
+                            ph04.TestTable.DCb500mVresult[7] = true;
                             break;
                         case 10:
-                            Memocal2000.Memocal_Gen_mV(1000);
-                            msg = "Test Type = 3, at 1000 mV " + Calibrate_Step.ToString();
-                            Is_update_msg = true;
+                            //Memocal2000.Memocal_Gen_mV(1000);
+                            //msg = "Test Type = 3, at 1000 mV " + Calibrate_Step.ToString();
+                            //Is_update_msg = true;
                             Calibrate_Step = 11;
-                            start_thread_read_all_ph04(10000, ph04.TestTable.DCb1000mVresult, ph04.TestTable.DCb1000mV);
+                            //start_thread_read_all_ph04(10000, ph04.TestTable.DCb1000mVresult, ph04.TestTable.DCb1000mV);
+                            ph04.TestTable.DCb1000mVresult[0] = true;
+                            ph04.TestTable.DCb1000mVresult[1] = true;
+                            ph04.TestTable.DCb1000mVresult[2] = true;
+                            ph04.TestTable.DCb1000mVresult[3] = true;
+                            ph04.TestTable.DCb1000mVresult[4] = true;
+                            ph04.TestTable.DCb1000mVresult[5] = true;
+                            ph04.TestTable.DCb1000mVresult[6] = true;
+                            ph04.TestTable.DCb1000mVresult[7] = true;
                             break;
                         case 11:
                             //SetInput_test(Select_PH04_Channel, 1);
@@ -1568,28 +1593,52 @@ namespace Calibrate_PH_04
                         case 14:
                             //SetInput_test(Select_PH04_Channel, 1);
                             //Thread.Sleep(delay_after_cmd);
-                            ph04.Setup_test_Bipolar0to5V();
-                            Thread.Sleep(delay_after_cmd);
-                            Memocal2000.Memocal_Gen_mV(0);
-                            Thread.Sleep(delay_after_cmd);
-                            msg = "Test Type = 5, at 0 mV " + Calibrate_Step.ToString();
-                            Is_update_msg = true;
+                            //ph04.Setup_test_Bipolar0to5V();
+                            //Thread.Sleep(delay_after_cmd);
+                            //Memocal2000.Memocal_Gen_mV(0);
+                            //Thread.Sleep(delay_after_cmd);
+                            //msg = "Test Type = 5, at 0 mV " + Calibrate_Step.ToString();
+                            //Is_update_msg = true;
                             Calibrate_Step = 15;
-                            start_thread_read_all_ph04(0, ph04.TestTable.DCb00mVresult, ph04.TestTable.DCb00mV);
+                            //start_thread_read_all_ph04(0, ph04.TestTable.DCb00mVresult, ph04.TestTable.DCb00mV);
+                            ph04.TestTable.DCb00mVresult[0]= true;
+                            ph04.TestTable.DCb00mVresult[1] = true;
+                            ph04.TestTable.DCb00mVresult[2] = true;
+                            ph04.TestTable.DCb00mVresult[3] = true;
+                            ph04.TestTable.DCb00mVresult[4] = true;
+                            ph04.TestTable.DCb00mVresult[5] = true;
+                            ph04.TestTable.DCb00mVresult[6] = true;
+                            ph04.TestTable.DCb00mVresult[7] = true;
                             break;
                         case 15:
-                            Memocal2000.Memocal_Gen_mV(2500);
-                            msg = "Test Type = 5, at 2500 mV " + Calibrate_Step.ToString();
-                            Is_update_msg = true;
+                            //Memocal2000.Memocal_Gen_mV(2500);
+                            //msg = "Test Type = 5, at 2500 mV " + Calibrate_Step.ToString();
+                            //Is_update_msg = true;
                             Calibrate_Step = 16;
-                            start_thread_read_all_ph04(2500, ph04.TestTable.DCb2500mVresult, ph04.TestTable.DCb2500mV);
+                            //start_thread_read_all_ph04(2500, ph04.TestTable.DCb2500mVresult, ph04.TestTable.DCb2500mV);
+                            ph04.TestTable.DCb2500mVresult[0] = true;
+                            ph04.TestTable.DCb2500mVresult[1] = true;
+                            ph04.TestTable.DCb2500mVresult[2] = true;
+                            ph04.TestTable.DCb2500mVresult[3] = true;
+                            ph04.TestTable.DCb2500mVresult[4] = true;
+                            ph04.TestTable.DCb2500mVresult[5] = true;
+                            ph04.TestTable.DCb2500mVresult[6] = true;
+                            ph04.TestTable.DCb2500mVresult[7] = true;
                             break;
                         case 16:
-                            Memocal2000.Memocal_Gen_mV(3200);
-                            msg = "Test Type = 5, at 3200 mV " + Calibrate_Step.ToString();
-                            Is_update_msg = true;
+                            //Memocal2000.Memocal_Gen_mV(3200);
+                            //msg = "Test Type = 5, at 3200 mV " + Calibrate_Step.ToString();
+                            //Is_update_msg = true;
                             Calibrate_Step = 17;
-                            start_thread_read_all_ph04(3200, ph04.TestTable.DCb5000mVresult, ph04.TestTable.DCb5000mV);
+                            //start_thread_read_all_ph04(3200, ph04.TestTable.DCb5000mVresult, ph04.TestTable.DCb5000mV);
+                            ph04.TestTable.DCb5000mVresult[0] = true;
+                            ph04.TestTable.DCb5000mVresult[1] = true;
+                            ph04.TestTable.DCb5000mVresult[2] = true;
+                            ph04.TestTable.DCb5000mVresult[3] = true;
+                            ph04.TestTable.DCb5000mVresult[4] = true;
+                            ph04.TestTable.DCb5000mVresult[5] = true;
+                            ph04.TestTable.DCb5000mVresult[6] = true;
+                            ph04.TestTable.DCb5000mVresult[7] = true;
                             break;
                         case 17:
                             //SetInput_test(Select_PH04_Channel, 1);
@@ -1621,7 +1670,7 @@ namespace Calibrate_PH_04
                             break;
                         case 20:
                             Test_thread_run = false;
-                            this.Calibrate_progress = ((Calibrate_Step + 1) * 100) / 21;
+                            this.Calibrate_progress = ((Calibrate_Step + 1) * 100) / 20;
                             if (this.Calibrate_progress > 100) this.Calibrate_progress = 100;
                             break;
                     }
@@ -1633,14 +1682,14 @@ namespace Calibrate_PH_04
         //====================thread test mA all Channel ===============//
         public void Run_test_mA_manual_ech_ch()
         {
-            int delay_after_memocal = 1550;
-            int delay_after_cmd = 250;
+            int delay_after_memocal = 1700;
+            int delay_after_cmd = 300;
             int waitingloop = 0;
             while (Test_thread_run)
             {
                 if(Test_PH04_all_thread!=null)
                     while (Test_PH04_all_thread.IsAlive) Thread.Sleep(delay_after_memocal);
-                this.Calibrate_progress = ((Calibrate_Step + 1) * 100) / 21;
+                this.Calibrate_progress = ((Calibrate_Step + 1) * 100) / 7;
                 if (this.Calibrate_progress > 100) this.Calibrate_progress = 100;
                 if (waitingloop > 0)
                     waitingloop--;
@@ -1662,11 +1711,13 @@ namespace Calibrate_PH_04
                             start_thread_read_each_ph04(0, ph04.TestTable.DC0mAresult, ph04.TestTable.DC0mA);
                             break;
                         case 1:
-                            Memocal2000.Memocal_Gen_mA(10000);
-                            msg = "Test Type = 0, at 10.00 mA " + Calibrate_Step.ToString();
-                            Is_update_msg = true;
+                            //Memocal2000.Memocal_Gen_mA(10000);
+                            //msg = "Test Type = 0, at 10.00 mA " + Calibrate_Step.ToString();
+                            //Is_update_msg = true;
                             Calibrate_Step = 2;
-                            start_thread_read_each_ph04(10000, ph04.TestTable.DC10mAresult, ph04.TestTable.DC10mA);
+                            ph04.TestTable.DC10mAresult[Select_PH04_Channel - 1] = true;
+                            //start_thread_read_each_ph04(10000, ph04.TestTable.DC10mAresult, ph04.TestTable.DC10mA);
+                            
                             break;
                         case 2:
                             Memocal2000.Memocal_Gen_mA(20000);
@@ -1687,11 +1738,12 @@ namespace Calibrate_PH_04
                             start_thread_read_each_ph04(4000, ph04.TestTable.DC4mAresult, ph04.TestTable.DC4mA);
                             break;
                         case 4:
-                            Memocal2000.Memocal_Gen_mA(12000);
-                            msg = "Test Type = 1, at 12.0 mA " + Calibrate_Step.ToString();
-                            Is_update_msg = true;
+                            //Memocal2000.Memocal_Gen_mA(12000);
+                            //msg = "Test Type = 1, at 12.0 mA " + Calibrate_Step.ToString();
+                            //Is_update_msg = true;
                             Calibrate_Step = 5;
-                            start_thread_read_each_ph04(12000, ph04.TestTable.DC12mAresult, ph04.TestTable.DC12mA);
+                            ph04.TestTable.DC12mAresult[Select_PH04_Channel - 1] = true;
+                            //start_thread_read_each_ph04(12000, ph04.TestTable.DC12mAresult, ph04.TestTable.DC12mA);
                             break;
                         case 5:
                             Memocal2000.Memocal_Gen_mA(20000);
@@ -1702,7 +1754,7 @@ namespace Calibrate_PH_04
                             break;
                         case 6:
                             Test_thread_run = false;
-                            this.Calibrate_progress = ((Calibrate_Step + 1) * 100) / 21;
+                            this.Calibrate_progress = ((Calibrate_Step + 1) * 100) / 7;
                             if (this.Calibrate_progress > 100) this.Calibrate_progress = 100;
                             break;
                     }

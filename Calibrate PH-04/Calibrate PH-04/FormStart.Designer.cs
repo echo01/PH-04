@@ -34,6 +34,12 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.text_pass = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
+            this.text_count = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.button9 = new System.Windows.Forms.Button();
+            this.label36 = new System.Windows.Forms.Label();
             this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.check_allch = new System.Windows.Forms.CheckBox();
@@ -79,6 +85,8 @@
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.label40 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
             this.label_calibrate = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -132,6 +140,9 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.ledpb04 = new System.Windows.Forms.PictureBox();
+            this.pb04ip = new System.Windows.Forms.TextBox();
+            this.label35 = new System.Windows.Forms.Label();
             this.ledph04id1 = new System.Windows.Forms.PictureBox();
             this.textPHId1 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -148,6 +159,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.button8 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
@@ -169,6 +183,7 @@
             this.calibrateProcess1 = new Calibrate_PH_04.CalibrateProcess(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.timer3 = new System.Windows.Forms.Timer(this.components);
+            this.bkgNextModule = new System.ComponentModel.BackgroundWorker();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
@@ -200,12 +215,14 @@
             this.tabPage3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ledpb04)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ledph04id1)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ledph07id3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ledph07id2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ledph07id1)).BeginInit();
             this.panel1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LED2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LedMemocal)).BeginInit();
             this.SuspendLayout();
@@ -258,6 +275,12 @@
             // panel10
             // 
             this.panel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel10.Controls.Add(this.text_pass);
+            this.panel10.Controls.Add(this.label39);
+            this.panel10.Controls.Add(this.text_count);
+            this.panel10.Controls.Add(this.label37);
+            this.panel10.Controls.Add(this.button9);
+            this.panel10.Controls.Add(this.label36);
             this.panel10.Controls.Add(this.checkBox5);
             this.panel10.Controls.Add(this.groupBox1);
             this.panel10.Controls.Add(this.label25);
@@ -276,12 +299,72 @@
             this.panel10.Size = new System.Drawing.Size(689, 323);
             this.panel10.TabIndex = 1;
             // 
+            // text_pass
+            // 
+            this.text_pass.AutoSize = true;
+            this.text_pass.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.text_pass.Location = new System.Drawing.Point(643, 116);
+            this.text_pass.Name = "text_pass";
+            this.text_pass.Size = new System.Drawing.Size(24, 28);
+            this.text_pass.TabIndex = 95;
+            this.text_pass.Text = "0";
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label39.Location = new System.Drawing.Point(496, 115);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(132, 28);
+            this.label39.TabIndex = 94;
+            this.label39.Text = "PASS Count :";
+            // 
+            // text_count
+            // 
+            this.text_count.AutoSize = true;
+            this.text_count.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.text_count.Location = new System.Drawing.Point(644, 77);
+            this.text_count.Name = "text_count";
+            this.text_count.Size = new System.Drawing.Size(24, 28);
+            this.text_count.TabIndex = 93;
+            this.text_count.Text = "0";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label37.Location = new System.Drawing.Point(496, 77);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(123, 28);
+            this.label37.TabIndex = 92;
+            this.label37.Text = "Test Count :";
+            // 
+            // button9
+            // 
+            this.button9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button9.Location = new System.Drawing.Point(274, 23);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(168, 29);
+            this.button9.TabIndex = 91;
+            this.button9.Text = "Next Module";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(577, 5);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(94, 20);
+            this.label36.TabIndex = 90;
+            this.label36.Text = "version : 1.02";
+            // 
             // checkBox5
             // 
             this.checkBox5.AutoSize = true;
             this.checkBox5.Checked = true;
             this.checkBox5.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox5.Location = new System.Drawing.Point(496, 77);
+            this.checkBox5.Location = new System.Drawing.Point(496, 42);
             this.checkBox5.Name = "checkBox5";
             this.checkBox5.Size = new System.Drawing.Size(154, 24);
             this.checkBox5.TabIndex = 89;
@@ -463,6 +546,7 @@
             // 
             // btn_stop_calibrate
             // 
+            this.btn_stop_calibrate.Enabled = false;
             this.btn_stop_calibrate.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_stop_calibrate.Location = new System.Drawing.Point(346, 76);
             this.btn_stop_calibrate.Name = "btn_stop_calibrate";
@@ -483,6 +567,7 @@
             // 
             // btn_autoTest
             // 
+            this.btn_autoTest.Enabled = false;
             this.btn_autoTest.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_autoTest.Location = new System.Drawing.Point(182, 76);
             this.btn_autoTest.Name = "btn_autoTest";
@@ -494,6 +579,7 @@
             // 
             // btn_autoCalibrate
             // 
+            this.btn_autoCalibrate.Enabled = false;
             this.btn_autoCalibrate.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_autoCalibrate.Location = new System.Drawing.Point(21, 76);
             this.btn_autoCalibrate.Name = "btn_autoCalibrate";
@@ -564,9 +650,9 @@
             this.panel11.Controls.Add(this.Result_CH1);
             this.panel11.Controls.Add(this.label26);
             this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel11.Location = new System.Drawing.Point(0, 215);
+            this.panel11.Location = new System.Drawing.Point(0, 228);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(251, 406);
+            this.panel11.Size = new System.Drawing.Size(251, 393);
             this.panel11.TabIndex = 2;
             // 
             // label34
@@ -745,17 +831,17 @@
             this.panel9.Controls.Add(this.checkBox4);
             this.panel9.Controls.Add(this.checkBox3);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel9.Location = new System.Drawing.Point(0, 113);
+            this.panel9.Location = new System.Drawing.Point(0, 144);
             this.panel9.Name = "panel9";
             this.panel9.Padding = new System.Windows.Forms.Padding(5);
-            this.panel9.Size = new System.Drawing.Size(251, 102);
+            this.panel9.Size = new System.Drawing.Size(251, 84);
             this.panel9.TabIndex = 1;
             // 
             // label22
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label22.Location = new System.Drawing.Point(68, 11);
+            this.label22.Location = new System.Drawing.Point(68, 9);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(132, 28);
             this.label22.TabIndex = 2;
@@ -767,7 +853,7 @@
             this.checkBox4.Checked = true;
             this.checkBox4.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.checkBox4.Location = new System.Drawing.Point(166, 54);
+            this.checkBox4.Location = new System.Drawing.Point(166, 41);
             this.checkBox4.Name = "checkBox4";
             this.checkBox4.Size = new System.Drawing.Size(59, 27);
             this.checkBox4.TabIndex = 1;
@@ -780,7 +866,7 @@
             this.checkBox3.Checked = true;
             this.checkBox3.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.checkBox3.Location = new System.Drawing.Point(38, 54);
+            this.checkBox3.Location = new System.Drawing.Point(38, 41);
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(60, 27);
             this.checkBox3.TabIndex = 0;
@@ -789,21 +875,43 @@
             // 
             // panel7
             // 
+            this.panel7.Controls.Add(this.label40);
+            this.panel7.Controls.Add(this.label38);
             this.panel7.Controls.Add(this.label_calibrate);
             this.panel7.Controls.Add(this.label21);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel7.Location = new System.Drawing.Point(0, 0);
             this.panel7.Name = "panel7";
             this.panel7.Padding = new System.Windows.Forms.Padding(5);
-            this.panel7.Size = new System.Drawing.Size(251, 113);
+            this.panel7.Size = new System.Drawing.Size(251, 144);
             this.panel7.TabIndex = 0;
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label40.Location = new System.Drawing.Point(124, 91);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(72, 31);
+            this.label40.TabIndex = 96;
+            this.label40.Text = "WAIT";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label38.Location = new System.Drawing.Point(22, 92);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(82, 28);
+            this.label38.TabIndex = 95;
+            this.label38.Text = "Result :";
             // 
             // label_calibrate
             // 
             this.label_calibrate.AutoSize = true;
             this.label_calibrate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label_calibrate.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label_calibrate.Location = new System.Drawing.Point(74, 43);
+            this.label_calibrate.Location = new System.Drawing.Point(74, 38);
             this.label_calibrate.Name = "label_calibrate";
             this.label_calibrate.Size = new System.Drawing.Size(115, 37);
             this.label_calibrate.TabIndex = 1;
@@ -812,10 +920,10 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label21.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label21.Location = new System.Drawing.Point(74, 5);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(121, 28);
+            this.label21.Size = new System.Drawing.Size(110, 25);
             this.label21.TabIndex = 0;
             this.label21.Text = "Stop Watch";
             // 
@@ -1454,6 +1562,9 @@
             // panel4
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel4.Controls.Add(this.ledpb04);
+            this.panel4.Controls.Add(this.pb04ip);
+            this.panel4.Controls.Add(this.label35);
             this.panel4.Controls.Add(this.ledph04id1);
             this.panel4.Controls.Add(this.textPHId1);
             this.panel4.Controls.Add(this.label8);
@@ -1463,6 +1574,39 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(361, 362);
             this.panel4.TabIndex = 1;
+            // 
+            // ledpb04
+            // 
+            this.ledpb04.Enabled = false;
+            this.ledpb04.Image = global::Calibrate_PH_04.Properties.Resources.red;
+            this.ledpb04.Location = new System.Drawing.Point(223, 179);
+            this.ledpb04.Name = "ledpb04";
+            this.ledpb04.Size = new System.Drawing.Size(34, 34);
+            this.ledpb04.TabIndex = 80;
+            this.ledpb04.TabStop = false;
+            this.ledpb04.Visible = false;
+            // 
+            // pb04ip
+            // 
+            this.pb04ip.Enabled = false;
+            this.pb04ip.Location = new System.Drawing.Point(15, 183);
+            this.pb04ip.Name = "pb04ip";
+            this.pb04ip.Size = new System.Drawing.Size(168, 27);
+            this.pb04ip.TabIndex = 79;
+            this.pb04ip.Text = "192.168.1.10";
+            this.pb04ip.Visible = false;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Enabled = false;
+            this.label35.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label35.Location = new System.Drawing.Point(15, 140);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(69, 28);
+            this.label35.TabIndex = 78;
+            this.label35.Text = "PB-04";
+            this.label35.Visible = false;
             // 
             // ledph04id1
             // 
@@ -1629,6 +1773,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.listBox1);
             this.panel1.Controls.Add(this.button8);
             this.panel1.Controls.Add(this.button6);
@@ -1648,6 +1793,45 @@
             this.panel1.Padding = new System.Windows.Forms.Padding(5);
             this.panel1.Size = new System.Drawing.Size(587, 631);
             this.panel1.TabIndex = 0;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.radioButton2);
+            this.groupBox2.Controls.Add(this.radioButton1);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.groupBox2.Location = new System.Drawing.Point(5, 253);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(577, 89);
+            this.groupBox2.TabIndex = 74;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Calibrate Deveice";
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(324, 41);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(73, 24);
+            this.radioButton2.TabIndex = 1;
+            this.radioButton2.Text = "PB-04";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.Visible = false;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Location = new System.Drawing.Point(111, 40);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(74, 24);
+            this.radioButton1.TabIndex = 0;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "PH-04";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // listBox1
             // 
@@ -1804,13 +1988,15 @@
             // 
             // timer2
             // 
-            this.timer2.Interval = 500;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // timer3
             // 
-            this.timer3.Interval = 500;
             this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
+            // 
+            // bkgNextModule
+            // 
+            this.bkgNextModule.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bkgNextModule_DoWork);
             // 
             // FormStart
             // 
@@ -1862,6 +2048,7 @@
             this.panel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ledpb04)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ledph04id1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -1870,6 +2057,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ledph07id1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LED2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LedMemocal)).EndInit();
             this.ResumeLayout(false);
@@ -2017,5 +2206,20 @@
         private System.Windows.Forms.Timer timer3;
         private CheckBox checkBox5;
         private CheckBox check_allch;
+        private GroupBox groupBox2;
+        private RadioButton radioButton2;
+        private RadioButton radioButton1;
+        private PictureBox ledpb04;
+        private TextBox pb04ip;
+        private Label label35;
+        private Label label36;
+        private Label text_count;
+        private Label label37;
+        private Button button9;
+        private Label text_pass;
+        private Label label39;
+        private Label label40;
+        private Label label38;
+        private System.ComponentModel.BackgroundWorker bkgNextModule;
     }
 }

@@ -18,7 +18,7 @@ namespace Calibrate_PH_04
         //public PH07 ph07id4 = new PH07();
         CalibrateProcess process = new();
         Form1 ResultForm = new();
-
+        bool wait_button6;
         public FormStart()
         {
             InitializeComponent();
@@ -76,6 +76,7 @@ namespace Calibrate_PH_04
 
         private void button6_Click(object sender, EventArgs e)
         {
+            wait_button6 = true;
             try
             {
                 if (!sPort2.IsOpen)
@@ -110,6 +111,7 @@ namespace Calibrate_PH_04
             catch
             {
                 MessageBox.Show("PH07 & PH04 Slave ID can be number only!!");
+                wait_button6 = false;
                 return;
             }
 
@@ -185,6 +187,7 @@ namespace Calibrate_PH_04
                               
             button6.Enabled = false;
             button8.Enabled = true;
+            wait_button6 = false;
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -233,7 +236,7 @@ namespace Calibrate_PH_04
 
         private void button11_Click(object sender, EventArgs e)
         {
-            if(!bkgWorker_GetPH04value.IsBusy)
+            //if(!bkgWorker_GetPH04value.IsBusy)
                 bkgWorker_GetPH04value.RunWorkerAsync();
             
         }
@@ -416,6 +419,9 @@ namespace Calibrate_PH_04
             process.Channel_need_to_calibrate[6] = check_ch7.Checked;
             process.Channel_need_to_calibrate[7] = check_ch8.Checked;
 
+            
+
+            richTextBox2.Text = "";
             process.Auto_Cal_Run = true;
             process.start_Auto_cal_thread(checkBox3.Checked,checkBox4.Checked);
             timer2.Enabled = true;
@@ -423,6 +429,8 @@ namespace Calibrate_PH_04
             stopWatch.Start();
             btn_autoCalibrate.Enabled = false;
             btn_autoTest.Enabled=false;
+            btn_stop_calibrate.Enabled = true;
+            button9.Enabled = false;
             if (timer3.Enabled) timer3.Enabled = false;
         }
 
@@ -431,18 +439,23 @@ namespace Calibrate_PH_04
         {
             bool t_result;
             t_result = process.ph04.TestTable.Report_result();
+
             
 
             if(check_allch.Checked)
             {
+                process.Count_test += 1;
                 if (t_result)
                 {
+                    process.Pass_test += 1;
                     if (ResultForm.IsDisposed)
                         ResultForm = new Form1();
                     ResultForm.label1.Visible = false;
                     ResultForm.label2.Visible = true;
                     ResultForm.Visible = true;
                     ResultForm.Show();
+                    label40.Text = "PASS";
+                    label40.ForeColor = Color.Green;
                 }
                 else
                 {
@@ -452,7 +465,11 @@ namespace Calibrate_PH_04
                     ResultForm.label2.Visible = false;
                     ResultForm.Visible = true;
                     ResultForm.Show();
+                    label40.Text = "FAIL";
+                    label40.ForeColor = Color.Red;
                 }
+                text_count.Text = process.Count_test.ToString();
+                text_pass.Text = process.Pass_test.ToString();
             }
             else
             {
@@ -529,6 +546,7 @@ namespace Calibrate_PH_04
 
         private void timer2_Tick(object sender, EventArgs e)
         {
+            //if (timer3.Enabled) return;
             if (!bkgWorker_Stopwatch.IsBusy)
                 bkgWorker_Stopwatch.RunWorkerAsync();
             if (process.Is_update_msg)
@@ -546,11 +564,16 @@ namespace Calibrate_PH_04
             {
                 //Show_test_result();
                 timer2.Enabled = false;
-                btn_autoCalibrate.Enabled = true;
-                btn_autoTest.Enabled = true;
+                
                 if (checkBox5.Checked)
                 {
                     start_test();
+                }
+                else
+                {
+                    //btn_autoCalibrate.Enabled = true;
+                    //btn_autoTest.Enabled = true;
+                    button9.Enabled = true;
                 }
                     
             }
@@ -558,6 +581,7 @@ namespace Calibrate_PH_04
 
         private void timer3_Tick(object sender, EventArgs e)
         {
+            //if (timer2.Enabled) return;
             if(!bkgWorker_Stopwatch.IsBusy)
                 bkgWorker_Stopwatch.RunWorkerAsync();
             if (process.Is_update_msg)
@@ -574,8 +598,10 @@ namespace Calibrate_PH_04
             if (!process.Auto_Cal_Run)
             {
                 timer3.Enabled = false;
-                btn_autoCalibrate.Enabled = true;
-                btn_autoTest.Enabled = true;
+                //btn_autoCalibrate.Enabled = true;
+                //btn_autoTest.Enabled = true;
+                btn_stop_calibrate.Enabled = false;
+                button9.Enabled = true;
                 Show_test_result();
             }
         }
@@ -615,14 +641,18 @@ namespace Calibrate_PH_04
             Result_CH8.Image = Properties.Resources.none1;
 
             process.Auto_Cal_Run = true;
+            btn_stop_calibrate.Enabled = true;
             process.start_Auto_test_thread(checkBox3.Checked, checkBox4.Checked);
             timer3.Enabled = true;
-            if (timer2.Enabled) timer2.Enabled = false;
+            //if (timer2.Enabled) timer2.Enabled = false;
         }
 
         private void btn_autoTest_Click(object sender, EventArgs e)
         {
+            richTextBox2.Text = "";
             start_test();
+            label40.Text = "WAIT";
+
             /*process.Channel_need_to_calibrate[0] = check_ch1.Checked;
             process.Channel_need_to_calibrate[1] = check_ch2.Checked;
             process.Channel_need_to_calibrate[2] = check_ch3.Checked;
@@ -645,6 +675,10 @@ namespace Calibrate_PH_04
             process.Auto_Cal_Run = true;
             process.start_Auto_test_thread(checkBox3.Checked, checkBox4.Checked);
             timer3.Enabled = true;*/
+            btn_autoCalibrate.Enabled = false;
+            btn_autoTest.Enabled = false;
+            btn_stop_calibrate.Enabled = true;
+            button9.Enabled = false;
             stopWatch.Restart();
             stopWatch.Start();
         }
@@ -653,6 +687,12 @@ namespace Calibrate_PH_04
         {
             process.stop_auto_cal_thread();
             process.stop_auto_test_thread();
+            //btn_autoTest.Enabled = true;
+            //btn_autoCalibrate.Enabled = true;
+            //btn_stop_calibrate.Enabled = false;
+            button9.Enabled=true;
+            timer2.Enabled = false;
+            timer3.Enabled = false;
         }
 
         private void check_ch1_CheckedChanged(object sender, EventArgs e)
@@ -750,6 +790,77 @@ namespace Calibrate_PH_04
             {
                 check_allch.Checked = check_ch1.Checked & check_ch2.Checked & check_ch3.Checked & check_ch4.Checked & check_ch5.Checked & check_ch6.Checked & check_ch7.Checked & check_ch8.Checked;
             }
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+
+            label7.Enabled = radioButton1.Checked;
+            label8.Enabled = radioButton1.Checked;
+            textPHId1.Enabled = radioButton1.Checked;
+            ledph04id1.Enabled = radioButton1.Checked;
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            label35.Enabled = radioButton2.Checked;
+            pb04ip.Enabled = radioButton2.Checked;
+            ledpb04.Enabled = radioButton2.Checked;
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            pictureBox1.Image= Properties.Resources.red;
+            richTextBox2.Text = "";
+            richTextBox2.AppendText("restart connection port....");
+            richTextBox2.AppendText(Environment.NewLine);
+
+            progressBar2.Value = 0;
+            progressBar3.Value = 0;
+
+            label40.Text = "----";
+            label40.ForeColor = Color.Black;
+
+            Result_CH1.Image = Properties.Resources.none1;
+            Result_CH2.Image = Properties.Resources.none1;
+            Result_CH3.Image = Properties.Resources.none1;
+            Result_CH4.Image = Properties.Resources.none1;
+            Result_CH5.Image = Properties.Resources.none1;
+            Result_CH6.Image = Properties.Resources.none1;
+            Result_CH7.Image = Properties.Resources.none1;
+            Result_CH8.Image = Properties.Resources.none1;
+            bkgNextModule.RunWorkerAsync();
+            button3_Click(sender, e);
+            button8_Click(sender, e);
+            button2_Click(sender, e);
+            button6_Click(sender, e);
+            
+        }
+
+        private void bkgNextModule_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            int wait_count=0;
+            while(wait_button6)
+            {
+                if(wait_count < 3)
+                {
+                    wait_count++;
+                    Thread.Sleep(500);
+                }
+                else
+                {
+                    wait_button6 = false;
+                }
+            }
+            this.Invoke(
+                new MethodInvoker(delegate () {
+                    btn_autoTest.Enabled = true;
+                    btn_autoCalibrate.Enabled = true;
+                    btn_stop_calibrate.Enabled = false;
+                })
+                );
+            
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
