@@ -184,6 +184,7 @@
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.bkgNextModule = new System.ComponentModel.BackgroundWorker();
+            this.bkgWork_GetPB04value = new System.ComponentModel.BackgroundWorker();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
@@ -1584,7 +1585,6 @@
             this.ledpb04.Size = new System.Drawing.Size(34, 34);
             this.ledpb04.TabIndex = 80;
             this.ledpb04.TabStop = false;
-            this.ledpb04.Visible = false;
             // 
             // pb04ip
             // 
@@ -1594,7 +1594,6 @@
             this.pb04ip.Size = new System.Drawing.Size(168, 27);
             this.pb04ip.TabIndex = 79;
             this.pb04ip.Text = "192.168.1.10";
-            this.pb04ip.Visible = false;
             // 
             // label35
             // 
@@ -1606,7 +1605,7 @@
             this.label35.Size = new System.Drawing.Size(69, 28);
             this.label35.TabIndex = 78;
             this.label35.Text = "PB-04";
-            this.label35.Visible = false;
+            this.label35.Click += new System.EventHandler(this.label35_Click);
             // 
             // ledph04id1
             // 
@@ -1710,6 +1709,7 @@
             this.textId3.TabIndex = 73;
             this.textId3.Text = "4";
             this.textId3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textId3.TextChanged += new System.EventHandler(this.textId3_TextChanged);
             // 
             // textId2
             // 
@@ -1817,7 +1817,6 @@
             this.radioButton2.TabIndex = 1;
             this.radioButton2.Text = "PB-04";
             this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.Visible = false;
             this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // radioButton1
@@ -1997,6 +1996,10 @@
             // bkgNextModule
             // 
             this.bkgNextModule.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bkgNextModule_DoWork);
+            // 
+            // bkgWork_GetPB04value
+            // 
+            this.bkgWork_GetPB04value.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bkgWork_GetPB04value_DoWork);
             // 
             // FormStart
             // 
@@ -2221,5 +2224,6 @@
         private Label label40;
         private Label label38;
         private System.ComponentModel.BackgroundWorker bkgNextModule;
+        private System.ComponentModel.BackgroundWorker bkgWork_GetPB04value;
     }
 }

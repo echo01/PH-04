@@ -18,6 +18,9 @@ namespace Calibrate_PH_04
         public PH07 ph07id2 = new();
         public PH07 ph07id3 = new();
         public PH07 ph07id4 = new();
+        //public PB04 pb04 = new();   
+
+
         public bool IsConnected;
         public bool IsReadyOnPH07_Module1;
         public bool IsReadyOnPH07_Module2;
@@ -246,6 +249,7 @@ namespace Calibrate_PH_04
                     break;
             }
         }
+
 
         public void start_calibrate_thread(bool mA,bool mV)
         {
