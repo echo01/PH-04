@@ -22,6 +22,7 @@ namespace Calibrate_PB_04
 
         public byte[] read_holding(int slaveid, int address, int lenght)
         {
+            TransactionID += 1;
             List<int> msg = new List<int>();
             msg.Add(TransactionID/256);
             msg.Add(TransactionID%256);
@@ -57,6 +58,7 @@ namespace Calibrate_PB_04
 
         public byte[] WriteMultiple(int slave_id, int address, List<int> value)
         {
+            TransactionID += 1;
             List<int> msg = new List<int>();
             msg.Add(TransactionID / 256);
             msg.Add(TransactionID % 256);

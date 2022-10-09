@@ -26,3 +26,33 @@ C:\Users\INUM4\Documents\GitHub\PH-04\Calibrate PH-04\Calibrate PH-04\bin\Debug\
 C:\Users\INUM4\Documents\GitHub\PH-04\Calibrate PH-04\Calibrate PH-04\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.IO.Ports.dll
 C:\Users\INUM4\Documents\GitHub\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Debug\net6.0-windows\Calibrate PH-04.csproj.CopyComplete
 C:\Users\INUM4\Documents\GitHub\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Debug\net6.0-windows\Calibrate_PH_04.Form1.resources
+D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\bin\Debug\net6.0-windows\Calibrate PH-04.exe
+D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\bin\Debug\net6.0-windows\Calibrate PH-04.deps.json
+D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\bin\Debug\net6.0-windows\Calibrate PH-04.runtimeconfig.json
+D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\bin\Debug\net6.0-windows\Calibrate PH-04.dll
+D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\bin\Debug\net6.0-windows\Calibrate PH-04.pdb
+D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\bin\Debug\net6.0-windows\System.IO.Ports.dll
+D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\bin\Debug\net6.0-windows\runtimes\linux-arm\native\libSystem.IO.Ports.Native.so
+D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\bin\Debug\net6.0-windows\runtimes\linux-arm64\native\libSystem.IO.Ports.Native.so
+D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\bin\Debug\net6.0-windows\runtimes\linux-x64\native\libSystem.IO.Ports.Native.so
+D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\bin\Debug\net6.0-windows\runtimes\osx-arm64\native\libSystem.IO.Ports.Native.dylib
+D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\bin\Debug\net6.0-windows\runtimes\osx-x64\native\libSystem.IO.Ports.Native.dylib
+D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\bin\Debug\net6.0-windows\runtimes\unix\lib\net6.0\System.IO.Ports.dll
+D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.IO.Ports.dll
+D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Debug\net6.0-windows\Calibrate PH-04.csproj.AssemblyReference.cache
+D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Debug\net6.0-windows\Calibrate_PH_04.Form1.resources
+D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Debug\net6.0-windows\Calibrate_PH_04.FormStart.resources
+D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Debug\net6.0-windows\Calibrate_PH_04.Properties.Resources.resources
+D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Debug\net6.0-windows\Calibrate PH-04.csproj.GenerateResource.cache
+D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Debug\net6.0-windows\Calibrate PH-04.GeneratedMSBuildEditorConfig.editorconfig
+D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Debug\net6.0-windows\Calibrate PH-04.AssemblyInfoInputs.cache
+D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Debug\net6.0-windows\Calibrate PH-04.AssemblyInfo.cs
+D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Debug\net6.0-windows\Calibrate PH-04.csproj.CoreCompileInputs.cache
+D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Debug\net6.0-windows\Calibrate PH-04.csproj.CopyComplete
+D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Debug\net6.0-windows\Calibrate PH-04.dll
+D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Debug\net6.0-windows\refint\Calibrate PH-04.dll
+D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Debug\net6.0-windows\Calibrate PH-04.pdb
+D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Debug\net6.0-windows\Calibrate PH-04.genruntimeconfig.cache
+D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Debug\net6.0-windows\ref\Calibrate PH-04.dll
+D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Debug\net6.0-windows\Calibrate_PH_04.Change_CircuitmV.resources
+D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Debug\net6.0-windows\Calibrate_PH_04.Change_CircuitmA.resources

@@ -226,11 +226,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\INUM4\\Documents\\GitHub\\PH-04\\Calibrate PH-04\\Calibrate PH-04\\Calibrate PH-04.csproj",
+      "projectUniqueName": "D:\\Product\\PH-Series\\PH-04\\65\\SW\\PH-04\\Calibrate PH-04\\Calibrate PH-04\\Calibrate PH-04.csproj",
       "projectName": "Calibrate PH-04",
-      "projectPath": "C:\\Users\\INUM4\\Documents\\GitHub\\PH-04\\Calibrate PH-04\\Calibrate PH-04\\Calibrate PH-04.csproj",
+      "projectPath": "D:\\Product\\PH-Series\\PH-04\\65\\SW\\PH-04\\Calibrate PH-04\\Calibrate PH-04\\Calibrate PH-04.csproj",
       "packagesPath": "C:\\Users\\INUM4\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\INUM4\\Documents\\GitHub\\PH-04\\Calibrate PH-04\\Calibrate PH-04\\obj\\",
+      "outputPath": "D:\\Product\\PH-Series\\PH-04\\65\\SW\\PH-04\\Calibrate PH-04\\Calibrate PH-04\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
