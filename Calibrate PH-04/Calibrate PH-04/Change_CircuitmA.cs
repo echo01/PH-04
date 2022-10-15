@@ -12,6 +12,11 @@ namespace Calibrate_PH_04
 {
     public partial class Change_CircuitmA : Form
     {
+        public void set_text(string msg)
+        {
+            label1.Text = msg;
+        }
+
         public Change_CircuitmA()
         {
             InitializeComponent();
