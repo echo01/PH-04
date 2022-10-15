@@ -37,7 +37,7 @@
             // 
             this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(283, 120);
+            this.button1.Location = new System.Drawing.Point(156, 122);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(94, 29);
             this.button1.TabIndex = 0;
@@ -49,8 +49,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(186, 52);
+            this.label1.Location = new System.Drawing.Point(73, 53);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(270, 28);
             this.label1.TabIndex = 1;
@@ -60,7 +59,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(658, 182);
+            this.ClientSize = new System.Drawing.Size(423, 182);
             this.ControlBox = false;
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
@@ -68,7 +67,6 @@
             this.Name = "Change_CircuitmV";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Change_Circuit";
-            this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();
 

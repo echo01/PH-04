@@ -401,7 +401,6 @@ namespace Calibrate_PH_04
                             msg = "Set PB04 to Calibrate mode.. ";
                             Calibrate_Step = 1;
                             Is_update_msg = true;
-                            waitingloop = 0;
                             break;
                         case 1:
                             if (pb04.Calibrate_Mux_channel(Select_Channel))
@@ -417,7 +416,6 @@ namespace Calibrate_PH_04
                                 Calibrate_Step = 0;
                                 return;
                             }
-                            waitingloop = 1;
                             Is_update_msg = true;
                             break;
                         case 2: //Offset Zero 0-20mA
@@ -493,7 +491,6 @@ namespace Calibrate_PH_04
                             msg = "Save Calibrate CH = " + Select_Channel.ToString() + " DONE..";
                             Is_update_msg = true;
                             Calibrate_thread_run = false;
-                            waitingloop = 0;
                             break;
                         default:
                             msg = "Stop process incorrect calibrate step on value " + Calibrate_Step.ToString();
@@ -539,7 +536,6 @@ namespace Calibrate_PH_04
                             msg = "Set PH04 to Calibrate mode.. ";
                             Calibrate_Step = 1;
                             Is_update_msg = true;
-                            waitingloop = 0;
                             break;
                         case 1:
                             if (pb04.Calibrate_Mux_channel(Select_Channel))
@@ -556,7 +552,6 @@ namespace Calibrate_PH_04
                                 return;
                             }
                             Is_update_msg = true;
-                            waitingloop = 1;
                             break;
                         case 6: //Setup Calibrate mV
                             //SetInput_test(Select_Channel, 1);                //  force tools switch relay for calibrate each channel
@@ -680,7 +675,6 @@ namespace Calibrate_PH_04
                             msg = "Save Calibrate CH = " + Select_Channel.ToString() + " DONE..";
                             Is_update_msg = true;
                             Calibrate_thread_run = false;
-                            waitingloop = 0;
                             break;
                         default:
                             msg = "Stop process incorrect calibrate step on value " + Calibrate_Step.ToString();
@@ -721,35 +715,18 @@ namespace Calibrate_PH_04
             int Calibrate_index = 0;
             int Calibrate_type = 0;
             //
-            string waring_msg;
-            waring_msg = "เปลี่ยนเป็นวงจร Calibate mA";
+            using (Change_CircuitmA FormWait = new Change_CircuitmA())
+                {
+                    if (FormWait.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+        
+                    }
+                }
             while (Auto_Cal_Run)
             {
                 switch(Calibrate_type)
                 {
                     case 0:
-                        using (Change_CircuitmA FormWait = new Change_CircuitmA())
-                        {
-                            FormWait.set_text(waring_msg);
-                            if (FormWait.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                            {
-                                pb04.Setup_test0to20mA();
-                                Thread.Sleep(200);
-                                Memocal2000.Memocal_Gen_mA(8000);                  //  Gen 0 mA
-                                msg = "Check circuit mA...";
-                                Is_update_msg = true;
-                                Thread.Sleep(5000);
-                                pb04.Is_module_ready();
-                            }
-                        }
-                        if (pb04.Is_PV_notZeor())
-                            Calibrate_type = 1;
-                        else
-                            {
-                            waring_msg = "ตรวจสอบการเชื่อมต่อวงจร Calibate mA";
-                        }
-                        break;
-                    case 1:
                         if (Calibrate_index <= 7)
                         {
                             if (Channel_need_to_calibrate[Calibrate_index] && (!Calibrate_thread_run))
@@ -758,7 +735,6 @@ namespace Calibrate_PH_04
                                 Select_Channel = Calibrate_index + 1;
                                 start_calibrate_thread(mA, false);
                                 Calibrate_index++;
-                                waring_msg = "เปลี่ยนเป็นวงจร Calibate mV";
                             }
                             else
                             {
@@ -769,35 +745,19 @@ namespace Calibrate_PH_04
                         {
                             if (!Calibrate_thread_run)
                                 {
-                                
                                 using (Change_CircuitmV FormWait = new Change_CircuitmV())
                                 {
-                                    FormWait.set_text(waring_msg);
                                     if (FormWait.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                                     {
-                                        pb04.Setup_test_0to10V();
-                                        Thread.Sleep(200);
-                                        Memocal2000.Memocal_Gen_mV(5000);                  //  Gen 5000 mV
-                                        msg = "Check circuit mV...";
-                                        Is_update_msg = true;
-                                        Thread.Sleep(7000);
-                                        pb04.Is_module_ready();
+                                        Calibrate_index = 0;
+                                        Calibrate_type = 1;
                                     }
                                 }
-                                if (pb04.Is_PV_notZeor())
-                                    {
-                                    Calibrate_index = 0;
-                                    Calibrate_type = 2;
-                                    }
-                                else
-                                    {
-                                    waring_msg = "ตรวจสอบการเชื่อมต่อวงจร Calibate mV";
-                                    }
                                 }
                                 
                         }
                         break;
-                    case 2:
+                    case 1:
                         if (Calibrate_index <= 7)
                         {
                             if (Channel_need_to_calibrate[Calibrate_index] && (!Calibrate_thread_run))
@@ -882,35 +842,18 @@ namespace Calibrate_PH_04
             int Calibrate_index = 0;
             int Calibrate_type = 0;
             //
-            string waring_msg;
-            waring_msg = "เปลี่ยนเป็นวงจร Calibate mV";
+            using (Change_CircuitmV FormWait = new Change_CircuitmV())
+            {
+                if (FormWait.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+
+                }
+            }
             while (Auto_Cal_Run)
             {
                 switch(Calibrate_type)
                 {
-                    case 0:                      
-                        using (Change_CircuitmV FormWait = new Change_CircuitmV())
-                        {
-                            FormWait.set_text(waring_msg);
-                            if (FormWait.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                            {
-                                pb04.Setup_test_0to10V();
-                                Thread.Sleep(200);
-                                Memocal2000.Memocal_Gen_mV(8000);                  //  Gen 5000 mV
-                                msg = "Check circuit mV...";
-                                Is_update_msg = true;
-                                Thread.Sleep(5000);
-                                pb04.Is_module_ready();
-                            }
-                        if (pb04.Is_PV_notZeor())
-                                Calibrate_type = 1;
-                        else
-                            {
-                                waring_msg = "ตรวจสอบการเชื่อมต่อวงจร Calibate mV";
-                            }
-                        }
-                        break;
-                    case 1:
+                    case 0:
                         if (Calibrate_index <1)
                         {
                             if (Channel_need_to_calibrate[Calibrate_index] && (!Calibrate_thread_run))
@@ -925,32 +868,18 @@ namespace Calibrate_PH_04
                         }
                         else
                         {
-                            waring_msg = "ตรวจสอบการเชื่อมต่อวงจร Calibate mA";
                             using (Change_CircuitmA FormWait = new Change_CircuitmA())
                             {
-                                FormWait.set_text(waring_msg);
                                 if (FormWait.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                                 {
-                                    pb04.Setup_test0to20mA();
-                                    Thread.Sleep(200);
-                                    pb04.read_enable();
-                                    Memocal2000.Memocal_Gen_mA(5000);                  //  Gen 5000 mV
-                                    msg = "Check circuit mA...";
-                                    Is_update_msg = true;
-                                    Thread.Sleep(5000);
-                                    pb04.Is_module_ready();
-                                }
-                                if (pb04.Is_PV_notZeor())
-                                    Calibrate_type = 2;
-                                else
-                                {
-                                    waring_msg = "ตรวจสอบการเชื่อมต่อวงจร Calibate mA";
+                                    //Calibrate_index = 0;
+                                    Calibrate_type = 1;
                                 }
                             }
                         }
                         break;
-                    case 2:
-                        if (Calibrate_index < 2)
+                    case 1:
+                        if (Calibrate_index <= 2)
                         {
                             Test_thread_run = false;
                             if (Test_thread != null)
@@ -1205,7 +1134,6 @@ namespace Calibrate_PH_04
                             Is_update_msg = true;
                             Calibrate_Step = 1;
                             start_thread_read_all_ph04(0, pb04.TestTable.DC0mAresult, pb04.TestTable.DC0mA);
-                           
                             break;
                         case 1:
                             //Memocal2000.Memocal_Gen_mA(10000);
@@ -1222,7 +1150,7 @@ namespace Calibrate_PH_04
                             pb04.TestTable.DC10mAresult[7] = true;
 
                             //start_thread_read_each_ph04(10000, ph04.TestTable.DC10mAresult, ph04.TestTable.DC10mA);
-                            waitingloop = 0;
+
                             break;
                         case 2:
                             Memocal2000.Memocal_Gen_mA(20000);
@@ -1256,7 +1184,6 @@ namespace Calibrate_PH_04
                             pb04.TestTable.DC12mAresult[6] = true;
                             pb04.TestTable.DC12mAresult[7] = true;
                             //start_thread_read_each_ph04(12000, ph04.TestTable.DC12mAresult, ph04.TestTable.DC12mA);
-                            waitingloop = 0;
                             break;
                         case 5:
                             Memocal2000.Memocal_Gen_mA(20000);
@@ -1267,7 +1194,6 @@ namespace Calibrate_PH_04
                             break;
                         case 6:
                             Test_thread_run = false;
-                            waitingloop = 0;
                             this.Calibrate_progress = ((Calibrate_Step + 1) * 100) / 7;
                             if (this.Calibrate_progress > 100) this.Calibrate_progress = 100;
                             break;
@@ -1314,7 +1240,6 @@ namespace Calibrate_PH_04
                             Calibrate_Step = 2;
                             pb04.TestTable.DC10mAresult[Select_Channel - 1] = true;
                             //start_thread_read_each_ph04(10000, ph04.TestTable.DC10mAresult, ph04.TestTable.DC10mA);
-                            waitingloop = 0;
 
                             break;
                         case 2:
@@ -1342,7 +1267,6 @@ namespace Calibrate_PH_04
                             Calibrate_Step = 5;
                             pb04.TestTable.DC12mAresult[Select_Channel - 1] = true;
                             //start_thread_read_each_ph04(12000, ph04.TestTable.DC12mAresult, ph04.TestTable.DC12mA);
-                            waitingloop = 0;
                             break;
                         case 5:
                             Memocal2000.Memocal_Gen_mA(20000);
