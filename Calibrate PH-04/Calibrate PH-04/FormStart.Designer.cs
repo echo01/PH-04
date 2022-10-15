@@ -358,7 +358,7 @@
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(94, 20);
             this.label36.TabIndex = 90;
-            this.label36.Text = "version : 1.02";
+            this.label36.Text = "version : 1.03";
             // 
             // checkBox5
             // 
@@ -893,9 +893,9 @@
             this.label40.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label40.Location = new System.Drawing.Point(124, 91);
             this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(72, 31);
+            this.label40.Size = new System.Drawing.Size(82, 31);
             this.label40.TabIndex = 96;
-            this.label40.Text = "WAIT";
+            this.label40.Text = "WAIT..";
             // 
             // label38
             // 
