@@ -258,6 +258,18 @@ namespace Calibrate_PH_04
             update_reg(rx_message);
             return IsResponded;
         }
+        public Boolean Is_PV_notZeor()
+        {
+            Boolean result=true;
+            for (int i=0; i <= 7; i++)
+                {
+                if (this.AnalogCH[i] > 1000)
+                    result &= true;
+                else
+                    result &= false;
+                }
+            return result;
+        }
 
         public static Int16 swap(Int16 input)
         {
