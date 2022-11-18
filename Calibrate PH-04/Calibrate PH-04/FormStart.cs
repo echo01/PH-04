@@ -208,11 +208,12 @@ namespace Calibrate_PH_04
 
             if(radioButton2.Checked)
             {
-                
-                if(!process2.pb04.IsPortOpen)
+                //listBox1.Items.Add("Plase Wait for Connect to IP PB-04 ...");
+                if (!process2.pb04.IsPortOpen)
                     process2.pb04.start_tcp(pb04ip.Text,501);
                 if(process2.pb04.Is_module_ready())
                 {
+                    listBox1.Items.Add("PB-04 module ready ...");
                     ledpb04.Image = Properties.Resources.green;
                     LED2.Image = Properties.Resources.green;
                     pictureBox1.Image = Properties.Resources.green;
@@ -703,6 +704,7 @@ namespace Calibrate_PH_04
                 richTextBox2.ScrollToCaret();
                 richTextBox2.Refresh();
             }
+
             if (check_ch1.Checked)
                 if (process2.pb04.TestTable.Cal_Result[0])
                     Result_CH1.Image = Properties.Resources.ok2;
@@ -779,7 +781,12 @@ namespace Calibrate_PH_04
 
             if (radioButton2.Checked)
             {
-                t_result = process2.pb04.TestTable.Report_result();
+                if (checkBox3.Checked && checkBox4.Checked)
+                    t_result = process2.pb04.TestTable.Report_result();
+                else if (checkBox3.Checked)
+                    t_result = process2.pb04.TestTable.Report_resultmA();
+                else
+                    t_result = process2.pb04.TestTable.Report_resultmV();
                 process2_test_result(t_result);
             }
 
@@ -1132,15 +1139,90 @@ namespace Calibrate_PH_04
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
+            button2.Enabled = true;
+            button6.Enabled = true;
+            comboBox2.Enabled = true;
+            panel3.Enabled = true;
+            if (process2.Memocal2000.IsPortOpen)
+            {
+                if (process2.Memocal2000.close_comport())
+                {
+                    LedMemocal.Image = Properties.Resources.red;
+                    listBox1.Items.Add("Disconnect Memocal2000... ");
+                }
+                else
+                {
+                    MessageBox.Show("Error !! Please check Comport or restart app");
+                    listBox1.Items.Add("Please check Comport & Memocal2000");
+                }
+            }
+
+            try
+            {
+                ledpb04.Image = Properties.Resources.red;
+                LED2.Image = Properties.Resources.red;
+                pictureBox1.Image = Properties.Resources.red;
+                process2.pb04.stop_tcp();
+            }
+            catch (Exception ex)
+            { MessageBox.Show(ex.ToString()); }
 
             label7.Enabled = radioButton1.Checked;
             label8.Enabled = radioButton1.Checked;
             textPHId1.Enabled = radioButton1.Checked;
             ledph04id1.Enabled = radioButton1.Checked;
+            //button3_Click(sender, e);
+            //button8_Click(sender, e);
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
+            //button3_Click(sender, e);
+            //button8_Click(sender, e);
+            panel3.Enabled = false;
+            comboBox2.Enabled = false;
+            button2.Enabled = true;
+            button6.Enabled = true;
+            if (process.Memocal2000.IsPortOpen)
+            {
+                if (process.Memocal2000.close_comport())
+                {
+                    LedMemocal.Image = Properties.Resources.red;
+                    listBox1.Items.Add("Disconnect Memocal2000... ");
+                }
+                else
+                {
+                    MessageBox.Show("Error !! Please check Comport or restart app");
+                    listBox1.Items.Add("Please check Comport & Memocal2000");
+                }
+            }
+
+            try
+            {
+                if (sPort2.IsOpen)
+                {
+                    try
+                    {
+                        sPort2.Close();
+                        listBox1.Items.Add("Tools disconnected...");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error !! Please check Comport or restart app" + ex.ToString());
+                        listBox1.Items.Add("Error !! Please check Comport or restart app");
+                    }
+                }
+
+                ledph07id1.Image = Properties.Resources.red;
+                ledph07id2.Image = Properties.Resources.red;
+                ledph07id3.Image = Properties.Resources.red;
+                ledph04id1.Image = Properties.Resources.red;
+                LED2.Image = Properties.Resources.red;
+            }
+            catch (Exception ex)
+            { MessageBox.Show(ex.ToString()); }
+
+
             label35.Enabled = radioButton2.Checked;
             pb04ip.Enabled = radioButton2.Checked;
             ledpb04.Enabled = radioButton2.Checked;

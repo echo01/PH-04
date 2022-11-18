@@ -40,6 +40,8 @@ D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\bin\Debug
 D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\bin\Debug\net6.0-windows\runtimes\unix\lib\net6.0\System.IO.Ports.dll
 D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.IO.Ports.dll
 D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Debug\net6.0-windows\Calibrate PH-04.csproj.AssemblyReference.cache
+D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Debug\net6.0-windows\Calibrate_PH_04.Change_CircuitmA.resources
+D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Debug\net6.0-windows\Calibrate_PH_04.Change_CircuitmV.resources
 D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Debug\net6.0-windows\Calibrate_PH_04.Form1.resources
 D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Debug\net6.0-windows\Calibrate_PH_04.FormStart.resources
 D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Debug\net6.0-windows\Calibrate_PH_04.Properties.Resources.resources
@@ -54,5 +56,3 @@ D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Debug
 D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Debug\net6.0-windows\Calibrate PH-04.pdb
 D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Debug\net6.0-windows\Calibrate PH-04.genruntimeconfig.cache
 D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Debug\net6.0-windows\ref\Calibrate PH-04.dll
-D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Debug\net6.0-windows\Calibrate_PH_04.Change_CircuitmV.resources
-D:\Product\PH-Series\PH-04\65\SW\PH-04\Calibrate PH-04\Calibrate PH-04\obj\Debug\net6.0-windows\Calibrate_PH_04.Change_CircuitmA.resources

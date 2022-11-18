@@ -127,6 +127,31 @@ namespace Calibrate_PH_04
             return test_result;
         }
 
+        public bool Report_resultmA()
+        {
+            bool test_result;
+            int i;
+            for (i = 0; i < 8; i++)
+            {
+                Cal_Result[i] = CH_Calibrate_mAResult(i);
+            }
+            test_result = Cal_Result[0] & Cal_Result[1] & Cal_Result[2] & Cal_Result[3] & Cal_Result[4] & Cal_Result[5] & Cal_Result[6] & Cal_Result[7];
+            return test_result;
+        }
+
+        public bool Report_resultmV()
+        {
+            bool test_result;
+            int i;
+            for (i = 0; i < 8; i++)
+            {
+                Cal_Result[i] = CH_Calibrate_mVResult(i);
+            }
+            test_result = Cal_Result[0] & Cal_Result[1] & Cal_Result[2] & Cal_Result[3] & Cal_Result[4] & Cal_Result[5] & Cal_Result[6] & Cal_Result[7];
+            return test_result;
+        }
+
+
     }
     public partial class PB04 : Component
     {
