@@ -169,10 +169,10 @@ namespace Calibrate_PH_04
                                 return;
                             }
 
-                            Memocal2000.Memocal_Gen_mA(20000);
+                            Memocal2000.Memocal_Gen_mA(20100);
                             Is_update_msg = true;
                             break;
-                        case 3: //Gain 0-20mA
+                        case 3: //Gain 0-20.1mA
                             if (pb04.Calibrate_Gain_0to20mA())
                             {
                                 //textconsole1.Text += "Calibrate Gain 0-20mA CH = " + PB04_input_CH.ToString() + " DONE..";
@@ -202,10 +202,10 @@ namespace Calibrate_PH_04
                                 msg = "Can't calibrate offset 4-20mA CH = " + Select_Channel.ToString() + " DONE..";
                                 return;
                             }
-                            Memocal2000.Memocal_Gen_mA(20000);
+                            Memocal2000.Memocal_Gen_mA(20100);
                             Is_update_msg = true;
                             break;
-                        case 5: //Gain 4-20mA
+                        case 5: //Gain 4-20.1mA
                             if (pb04.Calibrate_Gain_4to20mA())
                             {
                                 //textconsole1.Text += "Calibrate Gain 4-20mA CH = " + PB04_input_CH.ToString() + " DONE..";
@@ -249,12 +249,12 @@ namespace Calibrate_PH_04
                                 msg = "Can't calibrate Offset 0-1000mV CH = " + Select_Channel.ToString() + " DONE..";
                                 return;
                             }
-                            Memocal2000.Memocal_Gen_mV(1000);
+                            Memocal2000.Memocal_Gen_mV(1010);
                             Thread.Sleep(delay_after_memocal);
                             Is_update_msg = true;
                             waitingloop = 2;
                             break;
-                        case 8: //Gain 0-1000mV
+                        case 8: //Gain 0-1010mV
                             if (pb04.Calibrate_Gain_0to1000mV())
                             {
                                 //textconsole1.Text += "Calibrate Gain 0-1000mV CH = " + PB04_input_CH.ToString() + " DONE..";
@@ -287,7 +287,7 @@ namespace Calibrate_PH_04
                                 return;
                             }
                             //Thread.Sleep(delay_after_cmd);
-                            Memocal2000.Memocal_Gen_mV(5000);
+                            Memocal2000.Memocal_Gen_mV(5010);
                             Thread.Sleep(delay_after_memocal);
                             Is_update_msg = true;
                             waitingloop = 2;
@@ -325,7 +325,7 @@ namespace Calibrate_PH_04
                                 return;
                             }
                             //Thread.Sleep(delay_after_cmd);
-                            Memocal2000.Memocal_Gen_mV(10000);
+                            Memocal2000.Memocal_Gen_mV(10100);
                             Thread.Sleep(delay_after_memocal);
                             Is_update_msg = true;
                             waitingloop = 2;
@@ -381,7 +381,7 @@ namespace Calibrate_PH_04
                     waitingloop--;
                 else
                 {
-                    waitingloop = 3;
+                    waitingloop = 2;
                     switch (Calibrate_Step)
                     {
                         case 0:
@@ -433,10 +433,10 @@ namespace Calibrate_PH_04
                                 msg = "can't calibrate Offset 0-20mA CH = " + Select_Channel.ToString() + " DONE..";
                                 return;
                             }
-                            Memocal2000.Memocal_Gen_mA(20000);
+                            Memocal2000.Memocal_Gen_mA(20100);
                             Is_update_msg = true;
                             break;
-                        case 3: //Gain 0-20mA
+                        case 3: //Gain 0-20.1mA
                             if (pb04.Calibrate_Gain_0to20mA())
                             {
                                 //textconsole1.Text += "Calibrate Gain 0-20mA CH = " + PB04_input_CH.ToString() + " DONE..";
@@ -466,10 +466,10 @@ namespace Calibrate_PH_04
                                 msg = "Can't calibrate offset 4-20mA CH = " + Select_Channel.ToString() + " DONE..";
                                 return;
                             }
-                            Memocal2000.Memocal_Gen_mA(20000);
+                            Memocal2000.Memocal_Gen_mA(20100);
                             Is_update_msg = true;
                             break;
-                        case 5: //Gain 4-20mA
+                        case 5: //Gain 4-20.1mA
                             if (pb04.Calibrate_Gain_4to20mA())
                             {
                                 //textconsole1.Text += "Calibrate Gain 4-20mA CH = " + PB04_input_CH.ToString() + " DONE..";
@@ -560,7 +560,7 @@ namespace Calibrate_PH_04
                             break;
                         case 6: //Setup Calibrate mV
                             //SetInput_test(Select_Channel, 1);                //  force tools switch relay for calibrate each channel
-                            Thread.Sleep(delay_after_cmd);
+                            //Thread.Sleep(delay_after_cmd);
                             pb04.Calibrate_enable();                        //  set pb04 calibrate 
                             Memocal2000.Memocal_Gen_mV(0);
                             Thread.Sleep(delay_after_memocal);
@@ -581,7 +581,7 @@ namespace Calibrate_PH_04
                                 msg = "Can't calibrate Offset 0-1000mV CH = " + Select_Channel.ToString() + " DONE..";
                                 return;
                             }
-                            Memocal2000.Memocal_Gen_mV(1000);
+                            Memocal2000.Memocal_Gen_mV(1010);
                             Thread.Sleep(delay_after_memocal);
                             Is_update_msg = true;
                             break;
@@ -617,7 +617,7 @@ namespace Calibrate_PH_04
                                 return;
                             }
                             //Thread.Sleep(delay_after_cmd);
-                            Memocal2000.Memocal_Gen_mV(5000);
+                            Memocal2000.Memocal_Gen_mV(5010);
                             Thread.Sleep(delay_after_memocal);
                             Is_update_msg = true;
                             break;
@@ -653,7 +653,7 @@ namespace Calibrate_PH_04
                                 return;
                             }
                             //Thread.Sleep(delay_after_cmd);
-                            Memocal2000.Memocal_Gen_mV(10000);
+                            Memocal2000.Memocal_Gen_mV(10100);
                             Thread.Sleep(delay_after_memocal);
                             Is_update_msg = true;
                             break;
@@ -728,6 +728,13 @@ namespace Calibrate_PH_04
                 switch(Calibrate_type)
                 {
                     case 0:
+                        if(!mA)
+                        {   //  don't need calibrate mA skip to calibrate mV
+                            Calibrate_type = 2;
+                            Calibrate_index = 8;
+                            msg = "Check circuit mV...";
+                            break;
+                        }
                         using (Change_CircuitmA FormWait = new Change_CircuitmA())
                         {
                             FormWait.set_text(waring_msg);
@@ -738,7 +745,7 @@ namespace Calibrate_PH_04
                                 Memocal2000.Memocal_Gen_mA(8000);                  //  Gen 0 mA
                                 msg = "Check circuit mA...";
                                 Is_update_msg = true;
-                                Thread.Sleep(5000);
+                                Thread.Sleep(3000);
                                 pb04.Is_module_ready();
                             }
                         }
@@ -780,7 +787,7 @@ namespace Calibrate_PH_04
                                         Memocal2000.Memocal_Gen_mV(5000);                  //  Gen 5000 mV
                                         msg = "Check circuit mV...";
                                         Is_update_msg = true;
-                                        Thread.Sleep(7000);
+                                        Thread.Sleep(3000);
                                         pb04.Is_module_ready();
                                     }
                                 }
@@ -888,7 +895,14 @@ namespace Calibrate_PH_04
             {
                 switch(Calibrate_type)
                 {
-                    case 0:                      
+                    case 0:
+                        if (!mV)
+                        {   //  don't need calibrate mA skip to calibrate mV
+                            Calibrate_type = 1;
+                            Calibrate_index = 1;
+                            msg = "Check circuit mV...";
+                            break;
+                        }
                         using (Change_CircuitmV FormWait = new Change_CircuitmV())
                         {
                             FormWait.set_text(waring_msg);
@@ -899,11 +913,13 @@ namespace Calibrate_PH_04
                                 Memocal2000.Memocal_Gen_mV(8000);                  //  Gen 5000 mV
                                 msg = "Check circuit mV...";
                                 Is_update_msg = true;
-                                Thread.Sleep(5000);
+                                Thread.Sleep(3000);
                                 pb04.Is_module_ready();
                             }
                         if (pb04.Is_PV_notZeor())
+                            {
                                 Calibrate_type = 1;
+                            }         
                         else
                             {
                                 waring_msg = "ตรวจสอบการเชื่อมต่อวงจร Calibate mV";
@@ -925,6 +941,12 @@ namespace Calibrate_PH_04
                         }
                         else
                         {
+                            if(!mA)
+                            {
+                                Calibrate_type = 2;
+                                Calibrate_index = 2;
+                                break;
+                            }
                             waring_msg = "ตรวจสอบการเชื่อมต่อวงจร Calibate mA";
                             using (Change_CircuitmA FormWait = new Change_CircuitmA())
                             {
@@ -937,7 +959,7 @@ namespace Calibrate_PH_04
                                     Memocal2000.Memocal_Gen_mA(5000);                  //  Gen 5000 mV
                                     msg = "Check circuit mA...";
                                     Is_update_msg = true;
-                                    Thread.Sleep(5000);
+                                    Thread.Sleep(3000);
                                     pb04.Is_module_ready();
                                 }
                                 if (pb04.Is_PV_notZeor())
@@ -995,9 +1017,9 @@ namespace Calibrate_PH_04
                         case 0:
                             //SetInput_test(9, 1);
                             pb04.Setup_test0to1V();
-                            Thread.Sleep(delay_after_cmd);
+                            //Thread.Sleep(delay_after_cmd);
                             pb04.read_enable();
-                            Thread.Sleep(delay_after_cmd);
+                            //Thread.Sleep(delay_after_cmd);
                             Memocal2000.Memocal_Gen_mV(0);
                             msg = "Test Type = 2, at 0 mV " + Calibrate_Step.ToString();
                             Is_update_msg = true;
@@ -1178,7 +1200,7 @@ namespace Calibrate_PH_04
         //====================thread test mA all Channel ===============//
         public void Run_test_mA_manual_all_ch()
         {
-            int delay_after_memocal = 1700;
+            int delay_after_memocal = 500;
             int delay_after_cmd = 300;
             int waitingloop = 0;
             while (Test_thread_run)
@@ -1191,7 +1213,7 @@ namespace Calibrate_PH_04
                     waitingloop--;
                 else
                 {
-                    waitingloop = 2;
+                    waitingloop = 1;
                     switch (Calibrate_Step)
                     {
                         case 0:
@@ -1407,7 +1429,7 @@ namespace Calibrate_PH_04
         public void thread_read_all_ph04(int test_value, bool[] testresult, float[] An)
         {
             int delay_after_memocal = 1250;
-            int loop_read = 4;
+            int loop_read = 3;
             //bool test_result;
             while (loop_read-- > 0)
             {

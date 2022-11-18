@@ -358,7 +358,7 @@
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(94, 20);
             this.label36.TabIndex = 90;
-            this.label36.Text = "version : 1.03";
+            this.label36.Text = "version : 1.05";
             // 
             // checkBox5
             // 
